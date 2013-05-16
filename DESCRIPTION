@@ -11,7 +11,8 @@ Description: Utility functions to support the NeuroAnatomy Toolbox (nat).
     for working with the filesystem.
 Suggests:
     testthat,
-    roxygen2
+    roxygen2,
+    digest
 Collate:
     'nat.utils-package.r'
     'filelocks.r'
