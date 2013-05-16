@@ -14,3 +14,4 @@ Suggests:
     roxygen2
 Collate:
     'nat.utils-package.r'
+    'filelocks.r'
