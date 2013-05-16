@@ -10,6 +10,9 @@
 #' @export
 #' @seealso \code{\link{file.symlink}}
 file.hardlink=function(from,to,DryRun=FALSE,Force=FALSE){
+  if(.Platform$OS.type!='unix') 
+    stop("Can only make hard links on unix-like operating systems!")
+  
   if(length(to)>1) stop("can only have one target")
   # fix any paths using e.g. ~ for home dir - necessary because we will 
   # quote the paths later on which will prevent the shell from expanding them
@@ -86,10 +89,9 @@ abs2rel<-function(path,stempath=getwd(),StopIfNoCommonPath=FALSE){
 #' @export
 touch<-function(file,time,reference,timestoupdate=c("access","modification"),
     Create=TRUE){
-  if(.Platform$OS.type!="unix") {
-    warning("touch relies on the existence of a system touch command")
-    return(FALSE)
-  }
+  if(.Platform$OS.type!="unix")
+    stop("touch relies on the existence of a system touch command")
+
   if(!Create && !file.exists(file)) stop("Create=F and ",file," does not exist") 
   if(!missing(time) && !missing(reference))
     stop("Please supply either a time or a reference file but not both")
