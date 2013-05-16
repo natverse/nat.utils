@@ -38,7 +38,5 @@ removelock(lock)
 }
 \author{
   jefferis
-
-  jefferis
 }
 
