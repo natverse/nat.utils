@@ -1,5 +1,6 @@
 \name{makelock}
 \alias{makelock}
+\alias{removelock}
 \title{Make and remove (NFS safe) lock files}
 \usage{
   makelock(lockfile, lockmsg, CreateDirectories = TRUE)

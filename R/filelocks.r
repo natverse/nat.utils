@@ -36,9 +36,8 @@ makelock<-function(lockfile,lockmsg,CreateDirectories=TRUE){
 #' Remove lock file
 #' 
 #' \code{removelock} displays a warning if lockfile does not exist
-#' @author jefferis
 #' @export
-#' @name makelock
+#' @rdname makelock
 removelock<-function(lockfile){
   if(unlink(lockfile)!=0) {
     warning("Unable to remove ",lockfile)
