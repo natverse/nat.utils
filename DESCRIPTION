@@ -15,3 +15,4 @@ Suggests:
 Collate:
     'nat.utils-package.r'
     'filelocks.r'
+    'make.r'
