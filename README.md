@@ -12,7 +12,7 @@ In the fullness of time, I expect there to be a `nat` package which collects tog
 ## Installation
 
 ### Released versions
-    install.packages("gjdevtools",repos='http://jefferislab.org/R',type='source')
+    install.packages("nat.utils",repos='http://jefferislab.org/R',type='source')
 ### Bleeding Edge
 Straight from github with Hadley Wickham's [devtools](https://github.com/hadley/devtools) package:
 
