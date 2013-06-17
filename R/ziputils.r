@@ -16,11 +16,19 @@ zipinfo<-function(f){
   result_lines=seq(from=dash_lines[1]+1,to=dash_lines[2]-1)
   
   selresults=results[c(2,result_lines)]
+  nameColPos=regexpr('Name',results[2])
+  firstcols=substr(selresults,1,nameColPos-1)
+  
   # remove initial spaces
-  selresults=sub("^[ ]+",'',selresults)
+  firstcols=sub("^[ ]+",'',firstcols)
   # convert intervening spaces to tabs
-  selresults=gsub("[ ]+",'\t',selresults)
-  read.table(text=selresults,header=T,colClasses=c(Method='factor'),as.is=TRUE)
+  firstcols=gsub("[ ]+",'\t',firstcols)
+  df=read.table(text=firstcols,header=T,colClasses=c(Method='factor'),as.is=TRUE)
+  
+  # now handle file names
+  max_width=max(sapply(results,nchar))
+  df$Name=substr(selresults[-1],nameColPos,max_width)
+  df
 }
 
 #' Verify integrity of one or more zip files
