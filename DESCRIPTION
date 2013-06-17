@@ -1,8 +1,8 @@
 Package: nat.utils
 Maintainer: Gregory Jefferis <jefferis@gmail.com>
 Author: Gregory Jefferis
-Version: 0.1
-Date: 2013-05-16
+Version: 0.2
+Date: 2013-06-17
 License: GPL-3
 Title: File System Utility Functions for NeuroAnatomy Toolbox
 Description: Utility functions to support the NeuroAnatomy Toolbox (nat).
