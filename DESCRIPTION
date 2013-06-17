@@ -20,3 +20,4 @@ Collate:
     'fsutils.r'
     'gziputils.r'
     'sysutils.r'
+    'ziputils.r'
