@@ -1,32 +1,16 @@
 #' Make hardlink to file
 #' 
-#' Uses system call to access 'ln' command line utility
+#' Used system call to access 'ln' command line utility. Now deprecated in
+#' favour of recently introduced file.link function in base R.
 #' @param from Source file
 #' @param to (New) target hardlink file to create
-#' @param DryRun Just say what would happen
-#' @param Force Overwrite target file if it exists
 #' @return logical indicating success
 #' @author jefferis
 #' @export
 #' @seealso \code{\link{file.symlink}}
-file.hardlink=function(from,to,DryRun=FALSE,Force=FALSE){
-  if(.Platform$OS.type!='unix') 
-    stop("Can only make hard links on unix-like operating systems!")
-  
-  if(length(to)>1) stop("can only have one target")
-  # fix any paths using e.g. ~ for home dir - necessary because we will 
-  # quote the paths later on which will prevent the shell from expanding them
-  to=path.expand(to);from=path.expand(from)
-  # handle multiple froms
-  if(length(from)>1){
-    if(!file.info(".")$isdir) stop("target (to) must be a directory for multiple sources (from)")
-    from=paste(shQuote(from),collapse=" ")
-  } else from = shQuote(from)
-  # FIXME This is not very clever
-  if(nchar(from)>20000) stop("Shell command length exceeded!")
-  cmd=paste("ln",ifelse(Force,"-f",""),from,shQuote(to))
-  if(DryRun) cat("I would run:",cmd,"\n")
-  else system(cmd)==0
+file.hardlink=function(from,to){
+  .Deprecated('file.link')
+  file.link(from,to)
 }
 
 #' Swap names of two files (by renaming first to a temporary file)
