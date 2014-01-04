@@ -15,8 +15,8 @@ recommended way to access this code is through a wrapper R package
 [nat.as](https://github.com/jefferis/nat.as) available on github. I have also
 started incubating a formal [nat](https://github.com/jefferis/nat) R package on
 github, that will be released on CRAN in future. In the fullness of time I
-expect that this `nat` package may collects together a number of
-sub-packages or extension packages called `nat.*`.
+expect that this `nat` package will collect together a number of sub-packages or
+extension packages called `nat.*`.
 
 ## Installation
 
