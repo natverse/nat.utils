@@ -13,11 +13,3 @@ Suggests:
     testthat,
     roxygen2,
     digest
-Collate:
-    'nat.utils-package.r'
-    'filelocks.r'
-    'make.r'
-    'fsutils.r'
-    'gziputils.r'
-    'sysutils.r'
-    'ziputils.r'
