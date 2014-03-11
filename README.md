@@ -1,4 +1,5 @@
 # nat.utils
+[![Build Status](https://travis-ci.org/jefferis/nat.utils.png)](https://travis-ci.org/jefferis/nat.utils)
 
 An R package containing utility functions to support the NeuroAnatomy Toolbox (nat)
 
