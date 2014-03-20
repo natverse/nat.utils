@@ -32,17 +32,21 @@ logical indicating if cmd was run or for an R expression,
 eval(cmd)
 }
 \description{
-cmd can be an R expression, which is evaluated if
-necessary, a string to be passed to \code{\link{system}} or
-NULL/NA in which cases the files are checked and TRUE or
-FALSE is returned depending on whether action is required.
+Run a command if input files are newer than outputs
 }
 \details{
-When UseLock=TRUE, the lock file created is called
+\code{cmd} can be an R \code{expression}, which is
+\code{\link{eval}}uated if necessary in the environment
+calling \code{RunCmdForNewerInput}, a string to be passed
+to \code{\link{system}} or NULL/NA in which cases the files
+are checked and \code{TRUE} or \code{FALSE} is returned
+depending on whether action is required.
+
+When \code{UseLock=TRUE}, the lock file created is called
 outfiles[1].lock
 
-When ReturnInputTimes=TRUE, the input mtimes are returned
-as an attribute of a logical value (if available).
+When \code{ReturnInputTimes=TRUE}, the input mtimes are
+returned as an attribute of a logical value (if available).
 }
 \examples{
 \dontrun{
@@ -50,6 +54,6 @@ RunCmdForNewerInput(expression(myfunc("somefile")))
 }
 }
 \seealso{
-\code{\link{makelock}}
+\code{\link{makelock}, \link{eval}, \link{expression}}
 }
 
