@@ -29,7 +29,6 @@ gzip.crc<-function(f){
 #'   if the file cannot be accessed)
 #' @export
 #' @examples
-#' \dontrun{
 #' notgzipfile=tempfile()
 #' writeLines('not a gzip', notgzipfile)
 #' is.gzip(notgzipfile)
@@ -37,7 +36,6 @@ gzip.crc<-function(f){
 #' writeLines('This one is gzipped', con)
 #' is.gzip(gzipfile)
 #' unlink(c(notgzipfile,gzipfile))
-#' }
 is.gzip<-function(f) {
   if(file.access(f, mode=4)<0) return(NA)
   x=file(f)
