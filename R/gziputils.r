@@ -27,6 +27,7 @@ gzip.crc<-function(f){
 #' @param f Path to file to test
 #' @return logical indicating whether \code{f} is in gzip format (or \code{NA}
 #'   if the file cannot be accessed)
+#' @export
 #' @examples
 #' \dontrun{
 #' notgzipfile=tempfile()
