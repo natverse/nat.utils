@@ -4,7 +4,7 @@
 \title{Run a command if input files are newer than outputs}
 \usage{
 RunCmdForNewerInput(cmd, infiles, outfiles, Verbose = FALSE,
-  UseLock = FALSE, ReturnInputTimes = FALSE, ...)
+  UseLock = FALSE, Force = FALSE, ReturnInputTimes = FALSE, ...)
 }
 \arguments{
 \item{cmd}{An \code{\link{expression}}, a string or NA/NULL}
@@ -16,6 +16,9 @@ RunCmdForNewerInput(cmd, infiles, outfiles, Verbose = FALSE,
 \item{Verbose}{Write information to consolse (Default FALSE)}
 
 \item{UseLock}{Stop other processes working on this task (Default FALSE)}
+
+\item{Force}{Ignore file modification times and always produce output
+if input files exist.}
 
 \item{ReturnInputTimes}{Return mtimes of input files (default FALSE)}
 
