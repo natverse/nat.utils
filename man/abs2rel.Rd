@@ -6,7 +6,7 @@
 abs2rel(path, stempath = getwd(), StopIfNoCommonPath = FALSE)
 }
 \arguments{
-\item{path}{Path to make relative}
+\item{path}{Paths to make relative}
 
 \item{stempath}{Root to which \code{path} will be made relative}
 
