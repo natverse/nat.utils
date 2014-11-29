@@ -9,7 +9,7 @@
 #' @seealso \code{\link{zip}}
 zipinfo<-function(f){
   if(length(f)>1) return(sapply(f,zipinfo))
-  results=system2(command="unzip", args=c("-lv", shQuote(f)), stdout=TRUE)
+  results=system2(command=unzip(T), args=c("-lv", shQuote(f)), stdout=TRUE)
   
   dash_lines=grep('^-----',results)
   if(length(dash_lines)!=2) stop("Unable to parse zip information for file ",f)
@@ -42,7 +42,17 @@ zipinfo<-function(f){
 #' @family ziputils
 zipok<-function(f,Verbose=FALSE){
   if(length(f)>1) return(sapply(f, zipinfo, Verbose=Verbose))
-  result=system2(command="unzip", args=c("-t", shQuote(f)), 
+  result=system2(command=unzip(T), args=c("-t", shQuote(f)), 
                  stdout=ifelse(Verbose, "", FALSE))
   result==0
+}
+
+unzip<-function(mustWork=FALSE) {
+  if(is.null(w<-getOption("nat.utils.unzip"))){
+    w=Sys.which("unzip")[[1]]
+    options(nat.utils.unzip=w)
+  }
+  if(mustWork && !nzchar(w))
+    stop("Cannot find system unzip command!")
+  return(w)
 }
