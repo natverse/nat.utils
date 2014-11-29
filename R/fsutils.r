@@ -58,7 +58,7 @@ abs2rel<-function(path,stempath=getwd(),StopIfNoCommonPath=FALSE){
   
   mismatches=which(relpath==path)
   if(length(mismatches)){
-    warnorstopfun("stempath: ",stempath,"is not present in: ",
+    warnorstopfun("stempath: ",stempath," is not present in path(s): ",
                   paste(path[mismatches], collapes="\n"))
   }
   relpath

@@ -15,8 +15,12 @@ test_that('abs2rel works',{
   expect_equal(testans,realans)
   
   expect_error(abs2rel("/some/other/path","/Volumes/JData/JPeople/",
-                       StopIfNoCommonPath=TRUE),)
+                       StopIfNoCommonPath=TRUE))
   
+  expect_error(abs2rel(c("/some/path", "/someother/path"), "/some",
+                       StopIfNoCommonPath=TRUE), 
+               "stempath.*/some.*is not present in .* /someother/path")
+    
   expect_warning(testans<-abs2rel("/some/other/path","/Volumes/JData/JPeople/"))
   realans="/some/other/path"
   expect_equal(testans,realans)
