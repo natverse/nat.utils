@@ -1,3 +1,9 @@
+nat.utils 0.4.3
+===============
+* bugfix: abs2rel handles multiple paths without a warning
+* bugfix: zipinfo quotes files
+* dev: upgrade to roxygen2 v4.0.2 and better rstudio settings
+
 nat.utils 0.4.2
 ===============
 * bugfix: export is.gzip
