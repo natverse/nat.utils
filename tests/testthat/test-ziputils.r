@@ -1,7 +1,7 @@
 context("zip utility functions")
 
 test_that('can get information about sample zip file',{
-      zipfile=file.path('data','sample.zip')
+      zipfile=file.path('testdata','sample.zip')
       r=zipinfo(zipfile)
       baseline=structure(list(Length = c(0L, 25L, 0L, 0L), Method = structure(c(1L, 
                       1L, 1L, 1L), .Label = "Stored", class = "factor"), Size = c(0L, 
@@ -14,7 +14,7 @@ test_that('can get information about sample zip file',{
               -4L))
       expect_equal(r,baseline)
       
-      zipfile_with_spaces=file.path('data','sample-spaces.zip')
+      zipfile_with_spaces=file.path('testdata','sample-spaces.zip')
       r2=zipinfo(zipfile_with_spaces)
       
       baseline2=structure(list(Length = c(0L, 25L), Method = structure(c(1L, 
@@ -26,7 +26,7 @@ test_that('can get information about sample zip file',{
               "Time", "CRC.32", "Name"), row.names = c(NA, -2L), class = "data.frame")
       expect_equal(r2,baseline2,label='parse zip file with paths containing spaces')
       
-      zipfile_onefile=file.path('data','sample-onefile.zip')
+      zipfile_onefile=file.path('testdata','sample-onefile.zip')
       r3=zipinfo(zipfile_onefile)
       
       baseline3=structure(list(Length = 25L, Method = structure(1L, .Label = "Stored", class = "factor"), 
@@ -40,7 +40,7 @@ test_that('can get information about sample zip file',{
     })
 
 test_that('can get test integrity of sample zip file',{
-      zipfile=file.path('data','sample.zip')
+      zipfile=file.path('testdata','sample.zip')
       notzipfile='test-ziputils.r'
       expect_true(zipok(zipfile))
       expect_false(zipok(notzipfile))
