@@ -9,7 +9,7 @@
 #' @seealso \code{\link{zip}}
 zipinfo<-function(f){
   if(length(f)>1) return(sapply(f,zipinfo))
-  results=system2(command="unzip",args=c("-lv",f),stdout=TRUE)
+  results=system2(command="unzip", args=c("-lv", shQuote(f)), stdout=TRUE)
   
   dash_lines=grep('^-----',results)
   if(length(dash_lines)!=2) stop("Unable to parse zip information for file ",f)
@@ -41,7 +41,8 @@ zipinfo<-function(f){
 #' @export
 #' @family ziputils
 zipok<-function(f,Verbose=FALSE){
-  if(length(f)>1) return(sapply(f,zipinfo,Verbose=Verbose))
-  result=system2(command="unzip",args=c("-t",f),stdout=ifelse(Verbose,"",FALSE))
+  if(length(f)>1) return(sapply(f, zipinfo, Verbose=Verbose))
+  result=system2(command="unzip", args=c("-t", shQuote(f)), 
+                 stdout=ifelse(Verbose, "", FALSE))
   result==0
 }
