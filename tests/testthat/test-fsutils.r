@@ -5,6 +5,11 @@ test_that('abs2rel works',{
   realans="Sebastian/images"
   expect_equal(testans,realans)
   
+  testans=abs2rel(file.path("/Volumes/JData/JPeople/Sebastian", LETTERS), 
+                  "/Volumes/JData/JPeople/")
+  realans=file.path("Sebastian", LETTERS)
+  expect_equal(testans, realans)
+  
   testans=abs2rel("/Volumes/JData/JPeople/Sebastian/images","/Volumes/JData/JPeople")
   realans="Sebastian/images"
   expect_equal(testans,realans)
