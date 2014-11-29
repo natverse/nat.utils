@@ -31,7 +31,7 @@ file.swap<-function(f1,f2){
 }
 
 #' Remove common part of two paths, leaving relative path
-#' @param path Path to make relative
+#' @param path Paths to make relative
 #' @param stempath Root to which \code{path} will be made relative
 #' @param StopIfNoCommonPath Error if no path in common
 #' @return Character vector containing relative path
@@ -42,6 +42,8 @@ file.swap<-function(f1,f2){
 #' path = "/Volumes/JData/JPeople/Sebastian/images"
 #' abs2rel(path,'/Volumes/JData')
 abs2rel<-function(path,stempath=getwd(),StopIfNoCommonPath=FALSE){
+  if(length(stempath)>1)
+    stop("only 1 stempath allowed!")
   path=path.expand(path)
   stempath=path.expand(stempath)
   ncsp=nchar(stempath)
@@ -53,9 +55,12 @@ abs2rel<-function(path,stempath=getwd(),StopIfNoCommonPath=FALSE){
   relpath=sub(stempath,"",path,fixed=TRUE)
   
   warnorstopfun=if(StopIfNoCommonPath) stop else warning
-  if(relpath==path)
-    warnorstopfun("stempath: ",stempath,"is not present in: ",path)
   
+  mismatches=which(relpath==path)
+  if(length(mismatches)){
+    warnorstopfun("stempath: ",stempath,"is not present in: ",
+                  paste(path[mismatches], collapes="\n"))
+  }
   relpath
 }
 
