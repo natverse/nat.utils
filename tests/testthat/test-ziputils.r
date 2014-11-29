@@ -1,6 +1,10 @@
 context("zip utility functions")
 
 test_that('can get information about sample zip file',{
+  if(nzchar(unzip())){
+  # only check fields which will not give trouble on machines with timezone
+  # differences i.e. drop Date/Time columns
+  chkfields=c("Length", "Method", "Size", "Ratio", "CRC.32", "Name")
       zipfile=file.path('testdata','sample.zip')
       r=zipinfo(zipfile)
       baseline=structure(list(Length = c(0L, 25L, 0L, 0L), Method = structure(c(1L, 
@@ -12,7 +16,7 @@ test_that('can get information about sample zip file',{
                   "sample/somedir/empty")), .Names = c("Length", "Method", "Size", 
               "Ratio", "Date", "Time", "CRC.32", "Name"), class = "data.frame", row.names = c(NA, 
               -4L))
-      expect_equal(r,baseline)
+      expect_equal(r[chkfields], baseline[chkfields])
       
       zipfile_with_spaces=file.path('testdata','sample-spaces.zip')
       r2=zipinfo(zipfile_with_spaces)
@@ -24,7 +28,8 @@ test_that('can get information about sample zip file',{
               ), Name = c("sample/", "sample/file with spaces in its name"
               )), .Names = c("Length", "Method", "Size", "Ratio", "Date", 
               "Time", "CRC.32", "Name"), row.names = c(NA, -2L), class = "data.frame")
-      expect_equal(r2,baseline2,label='parse zip file with paths containing spaces')
+      expect_equal(r2[chkfields], baseline2[chkfields],
+                   label='parse zip file with paths containing spaces')
       
       zipfile_onefile=file.path('testdata','sample-onefile.zip')
       r3=zipinfo(zipfile_onefile)
@@ -35,13 +40,18 @@ test_that('can get information about sample zip file',{
               "Method", "Size", "Ratio", "Date", "Time", "CRC.32", "Name"), row.names = c(NA, 
               -1L), class = "data.frame")
       
-      expect_equal(r3,baseline3,label='parse zip file containing only one entry')
+      expect_equal(r3[chkfields], baseline3[chkfields],
+                   label='parse zip file containing only one entry')
       
-    })
+    
+  }
+})
 
 test_that('can get test integrity of sample zip file',{
+  if(nzchar(unzip())){
       zipfile=file.path('testdata','sample.zip')
       notzipfile='test-ziputils.r'
       expect_true(zipok(zipfile))
       expect_false(zipok(notzipfile))
-    })
+  }
+})
