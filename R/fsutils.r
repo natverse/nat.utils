@@ -102,7 +102,8 @@ common_path<-function(paths, normalise=FALSE, fsep=.Platform$file.sep) {
   if(length(paths)<2) 
     return(paths)
 
-  path_chunks=strsplit(paths,fsep)
+  path_chunks=lapply(paths, split_path, fsep=fsep, include.fseps=TRUE, 
+                     omit.duplicate.fseps=TRUE)
   maxlen=max(sapply(path_chunks, length))
   # pad cols with NAs to same length
   path_chunks=lapply(path_chunks, function(x) {length(x)=maxlen;x})
@@ -114,7 +115,64 @@ common_path<-function(paths, normalise=FALSE, fsep=.Platform$file.sep) {
   diff_chunks=which(num_uniq_values!=1)
   first_diff_chunk=min(c(diff_chunks, maxlen+1))
   # paste the chunks upt to the first different fragment
-  paste(m[seq_len(first_diff_chunk-1), 1], collapse=fsep)
+  paste(m[seq_len(first_diff_chunk-1), 1], collapse="")
+}
+
+
+#' Split file path into individual components (optionally including separators)
+#' 
+#' @param path A path with directories separated by \code{fsep}s.
+#' @param include.fseps Whether to include the separators in the returned 
+#'   character vector (default \code{FALSE})
+#' @param omit.duplicate.fseps Whether to omit duplicate file separators if 
+#'   \code{include.fseps=TRUE} (default \code{FALSE}).
+#' @param fsep The path separator (default to \code{.Platform$file.sep})
+#'   
+#' @return A character vector with one element for each component in the path 
+#'   (including path separators if \code{include.fseps=TRUE}).
+#' @export
+#' @examples
+#' split_path("/a/b/c")
+#' split_path("a/b/c")
+#' parts=split_path("/a/b/c", include.fseps=TRUE)
+#' # join parts back up again
+#' paste(parts, collapse = "")
+#' split_path("a/b//c", include.fseps=TRUE, omit.duplicate.fseps=TRUE)
+#' # Windows style
+#' split_path("C:\\a\\b\\c", fsep="\\")
+split_path<-function(path, include.fseps=FALSE, omit.duplicate.fseps=FALSE,
+                     fsep=.Platform$file.sep) {
+  if(nchar(fsep)>1)
+    stop("fsep must consist of one character only!")
+  
+  # nb c() clears attributes
+  seps=c(gregexpr(fsep, path, fixed = T)[[1]])
+  # no match
+  if(seps[1]<0) return(path)
+  # "/a/b/c" -> "/" "a" "/" "b" "c"
+  # "job/cat/" -> "job" "/" "cat" "/"
+  
+  # add fake separator in last position to simplify loop below
+  seps=c(seps, nchar(path)+1)
+  chunks=character()
+  p=1
+  while(p<=nchar(path)){
+    if(substr(path,p,p)==fsep) {
+      if(include.fseps) {
+        if(omit.duplicate.fseps && isTRUE(chunks[length(chunks)]==fsep)) {
+          # omit this chunk
+        } else chunks=c(chunks, fsep)
+      }
+      p=p+1
+    } else {
+      # grab everything up to next separator
+      nextsep=seps[seps>p][1]
+      chunk=substr(path, p, nextsep-1)
+      p=p+nchar(chunk)
+      chunks=c(chunks,chunk)
+    }
+  }
+  chunks
 }
 
 #' Use unix touch utility to change file's timestamp
