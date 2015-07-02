@@ -69,7 +69,7 @@ abs2rel<-function(path,stempath=getwd(),StopIfNoCommonPath=FALSE){
 #' 
 #' @param paths Character vector of file paths
 #' @param normalise Whether to normalise \code{paths} (with 
-#'   \code{\link{normalizePath}})
+#'   \code{\link{normalizePath}}, default \code{FALSE})
 #' @param fsep Optional path separator (defaults to \code{.Platform$file.sep})
 #' @return Character vector of common prefix, \code{""} when there is no common 
 #'   prefix, or the original value of \code{paths} when fewer than 2 paths were 
@@ -92,7 +92,7 @@ abs2rel<-function(path,stempath=getwd(),StopIfNoCommonPath=FALSE){
 #' common_path(c("~","~/"))
 #' common_path(c("~/a/b/d","~/a/b/c/d"), normalise = FALSE)
 #' common_path(c("~","~/"), normalise = FALSE)
-common_path<-function(paths, normalise=TRUE, fsep=.Platform$file.sep) {
+common_path<-function(paths, normalise=FALSE, fsep=.Platform$file.sep) {
   if(normalise)
     paths=normalizePath(paths, mustWork = F, winslash = fsep)
   

@@ -4,13 +4,13 @@
 \alias{common_path}
 \title{Find common prefix of two or more (normalised) file paths}
 \usage{
-common_path(paths, normalise = TRUE, fsep = .Platform$file.sep)
+common_path(paths, normalise = FALSE, fsep = .Platform$file.sep)
 }
 \arguments{
 \item{paths}{Character vector of file paths}
 
 \item{normalise}{Whether to normalise \code{paths} (with
-\code{\link{normalizePath}})}
+\code{\link{normalizePath}}, default \code{FALSE})}
 
 \item{fsep}{Optional path separator (defaults to \code{.Platform$file.sep})}
 }
