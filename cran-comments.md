@@ -1,3 +1,9 @@
+# nat.utils 0.5.0
+This update adds some additional functionality as well as fixing a NOTE
+due to a missing import for read.table for nat.utils 0.4.2 on r-devel
+
+  http://cran.r-project.org/web/checks/check_results_nat.utils.html
+
 ## Test environments
 * local OS X install, R 3.2.1
 * ubuntu 12.04 (on travis-ci), R 3.2.1
