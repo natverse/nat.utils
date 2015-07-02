@@ -67,9 +67,9 @@ test_that("common_path works",{
   expect_equal(common_path(c("","")), "")
   expect_equal(common_path(c("","/a")), "")
   expect_equal(common_path(c("/a","/b")), "/")
-  expect_equal(common_path(c("/a/b/d","/b/c/d")), "")
+  expect_equal(common_path(c("/a/b/d","/b/c/d")), "/")
   expect_equal(common_path(c("/a/b/","/a/b")), "/a/b")
-  expect_equal(common_path(c("/a/b/d","/a/b/c/d")), "/a/b")
+  expect_equal(common_path(c("/a/b/d","/a/b/c/d")), "/a/b/")
   
   # with normalisation
   np<-function(x) normalizePath(x, winslash = .Platform$file.sep, mustWork = F)
@@ -78,11 +78,11 @@ test_that("common_path works",{
   expect_equal(common_path(c("","/a"), normalise = T), np(""))
   expect_equal(common_path(c("/a","/b"), normalise = T), np("/"))
   expect_equal(common_path(c("/a/b/","/a/b"), normalise = T), np("/a/b"))
-  expect_equal(common_path(c("/a/b/d","/a/b/c/d"), normalise = T), np("/a/b"))
+  expect_equal(common_path(c("/a/b/d","/a/b/c/d"), normalise = T), np("/a/b/"))
   
   # expansion required
   expect_equal(common_path(c("~","~/"), normalise = F), "~")
   expect_equal(common_path(c("~","~/"), normalise = T), np("~"))
-  expect_equal(common_path(c("~/a/b/d","~/a/b/c/d"), normalise = F), "~/a/b")
-  expect_equal(common_path(c("~/a/b/d","~/a/b/c/d"), normalise = T), np("~/a/b"))
+  expect_equal(common_path(c("~/a/b/d","~/a/b/c/d"), normalise = F), "~/a/b/")
+  expect_equal(common_path(c("~/a/b/d","~/a/b/c/d"), normalise = T), np("~/a/b/"))
 })
