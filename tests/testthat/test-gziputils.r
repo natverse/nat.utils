@@ -19,6 +19,8 @@ test_that('is.gzip works',{
   writeLines('not a gzip', notgzipfile)
   expect_false(is.gzip(notgzipfile))
   
+  expect_warning(gzip.crc(notgzipfile))
+  
   con=gzfile(gzipfile<-tempfile(),open='wt')
   writeLines('This one is gzipped', con)
   close(con)
