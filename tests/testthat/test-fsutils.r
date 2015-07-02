@@ -65,6 +65,7 @@ test_that("common_path works",{
     expect_equal(pfun(pp), "/a/b/c")
     expect_equal(pfun(c("a","b")), "")
     expect_equal(pfun(c("","")), "")
+    expect_equal(pfun(c("","/a")), "")
     expect_equal(pfun(c("/a","/b")), "")
     expect_equal(pfun(c("/a/b/d","/b/c/d")), "")
     expect_equal(pfun(c("/a/b/d","/a/b/c/d")), "/a/b")
