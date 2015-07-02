@@ -74,12 +74,11 @@ test_that("common_path works",{
   # with normalisation
   np<-function(x) normalizePath(x, winslash = .Platform$file.sep, mustWork = F)
   expect_equal(common_path(pp, normalise = T), np("/a/b/c"))
-  expect_equal(common_path(pp, normalise = T), np("/a/b/c"))
-  expect_equal(common_path(c("","")), "")
+  expect_equal(common_path(c("",""), normalise = T), "")
   expect_equal(common_path(c("","/a"), normalise = T), np(""))
   expect_equal(common_path(c("/a","/b"), normalise = T), np(""))
-  expect_equal(common_path(c("/a/b/","/a/b")), np("/a/b"))
-  expect_equal(common_path(c("/a/b/d","/a/b/c/d")), np("/a/b"))
+  expect_equal(common_path(c("/a/b/","/a/b"), normalise = T), np("/a/b"))
+  expect_equal(common_path(c("/a/b/d","/a/b/c/d"), normalise = T), np("/a/b"))
   
   # expansion required
   expect_equal(common_path(c("~","~/"), normalise = F), "~")
