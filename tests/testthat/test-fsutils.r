@@ -104,3 +104,12 @@ test_that("split_path works",{
   # errors
   expect_error(split_path(c(p1, p1)), 'one path')
 })
+
+test_that("file.swap works", {
+  tf=paste0(tempfile(), 1:2)
+  cat("1", file = tf[1])
+  cat("2", file = tf[2])
+  contents<-lapply(tf, scan, quiet=TRUE)
+  file.swap(tf[1],tf[2])
+  expect_equal(lapply(tf, scan, quiet=TRUE), rev(contents))
+})
