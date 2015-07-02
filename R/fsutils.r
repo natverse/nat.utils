@@ -132,6 +132,7 @@ common_path<-function(paths, normalise=FALSE, fsep=.Platform$file.sep) {
 #'   (including path separators if \code{include.fseps=TRUE}).
 #' @export
 #' @family path_utils
+#' @seealso \code{\link{file.path}}
 #' @examples
 #' split_path("/a/b/c")
 #' split_path("a/b/c")
