@@ -91,6 +91,7 @@ common_path2<-function(paths, fsep=.Platform$file.sep) {
   
   pathfrags <- strsplit(paths, fsep)
   maxlen=max(sapply(pathfrags, length))
+  if(maxlen<1) return("")
   
   for(i in seq_len(maxlen)) {
     ifrags=sapply(pathfrags, "[", i)
