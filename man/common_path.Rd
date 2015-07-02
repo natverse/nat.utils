@@ -22,6 +22,13 @@ Character vector of common prefix, \code{""} when there is no common
 \description{
 Find common prefix of two or more (normalised) file paths
 }
+\details{
+Note that \code{\link{normalizePath}} 1) operates according to the
+  conventions of the current runtime platform 2) is called with
+  \code{winslash=.Platform$file.sep} which means that normalised paths will
+  eventually end up separated by "\" by default on Windows rather than by
+  "//", which is \code{normalizePath}'s standard behaviour.
+}
 \examples{
 common_path(c("/a","/b"))
 common_path(c("/a/b/","/a/b"))
@@ -32,5 +39,10 @@ common_path(c("","/a"))
 common_path(c("~","~/"))
 common_path(c("~/a/b/d","~/a/b/c/d"), normalise = FALSE)
 common_path(c("~","~/"), normalise = FALSE)
+}
+\seealso{
+\code{\link{normalizePath}}
+
+Other path.functions: \code{\link{abs2rel}}
 }
 

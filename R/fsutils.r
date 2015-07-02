@@ -37,7 +37,8 @@ file.swap<-function(f1,f2){
 #' @return Character vector containing relative path
 #' @author jefferis
 #' @export
-#' @seealso \code{\link{path.expand}, \link{normalizePath}}
+#' @seealso \code{\link{path.expand}}, \code{\link{normalizePath}}
+#' @family path-functions
 #' @examples
 #' path = "/Volumes/JData/JPeople/Sebastian/images"
 #' abs2rel(path,'/Volumes/JData')
@@ -70,10 +71,17 @@ abs2rel<-function(path,stempath=getwd(),StopIfNoCommonPath=FALSE){
 #' @param normalise Whether to normalise \code{paths} (with 
 #'   \code{\link{normalizePath}})
 #' @param fsep Optional path separator (defaults to \code{.Platform$file.sep})
-#' @return Character vector of common prefix, \code{""} when there is no common
-#'   prefix, or the original value of \code{paths} when fewer than 2 paths were
+#' @return Character vector of common prefix, \code{""} when there is no common 
+#'   prefix, or the original value of \code{paths} when fewer than 2 paths were 
 #'   supplied.
 #' @export
+#' @details Note that \code{\link{normalizePath}} 1) operates according to the 
+#'   conventions of the current runtime platform 2) is called with
+#'   \code{winslash=.Platform$file.sep} which means that normalised paths will
+#'   eventually end up separated by "\" by default on Windows rather than by
+#'   "//", which is \code{normalizePath}'s standard behaviour.
+#' @seealso \code{\link{normalizePath}}
+#' @family path-functions
 #' @examples
 #' common_path(c("/a","/b"))
 #' common_path(c("/a/b/","/a/b"))
@@ -86,7 +94,7 @@ abs2rel<-function(path,stempath=getwd(),StopIfNoCommonPath=FALSE){
 #' common_path(c("~","~/"), normalise = FALSE)
 common_path<-function(paths, normalise=TRUE, fsep=.Platform$file.sep) {
   if(normalise)
-    paths=normalizePath(paths, mustWork = F)
+    paths=normalizePath(paths, mustWork = F, winslash = fsep)
   
   if(length(paths)<2) 
     return(paths)
