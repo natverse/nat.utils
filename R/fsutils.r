@@ -75,10 +75,13 @@ abs2rel<-function(path,stempath=getwd(),StopIfNoCommonPath=FALSE){
 #'   prefix, or the original value of \code{paths} when fewer than 2 paths were 
 #'   supplied.
 #' @export
-#' @details Note that \code{\link{normalizePath}} 1) operates according to the 
-#'   conventions of the current runtime platform 2) is called with
-#'   \code{winslash=.Platform$file.sep} which means that normalised paths will
-#'   eventually end up separated by "\" by default on Windows rather than by
+#' @details Note that for absolute paths, the common prefix will be returned 
+#'   e.g. \code{common_path(c("/a","/b"))} is \code{"/"}
+#'   
+#'   Note that \code{\link{normalizePath}} 1) operates according to the 
+#'   conventions of the current runtime platform 2) is called with 
+#'   \code{winslash=.Platform$file.sep} which means that normalised paths will 
+#'   eventually end up separated by "\" by default on Windows rather than by 
 #'   "//", which is \code{normalizePath}'s standard behaviour.
 #' @seealso \code{\link{normalizePath}}
 #' @family path-functions

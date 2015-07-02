@@ -66,7 +66,7 @@ test_that("common_path works",{
   expect_equal(common_path(c("a","b")), "")
   expect_equal(common_path(c("","")), "")
   expect_equal(common_path(c("","/a")), "")
-  expect_equal(common_path(c("/a","/b")), "")
+  expect_equal(common_path(c("/a","/b")), "/")
   expect_equal(common_path(c("/a/b/d","/b/c/d")), "")
   expect_equal(common_path(c("/a/b/","/a/b")), "/a/b")
   expect_equal(common_path(c("/a/b/d","/a/b/c/d")), "/a/b")
@@ -76,7 +76,7 @@ test_that("common_path works",{
   expect_equal(common_path(pp, normalise = T), np("/a/b/c"))
   expect_equal(common_path(c("",""), normalise = T), "")
   expect_equal(common_path(c("","/a"), normalise = T), np(""))
-  expect_equal(common_path(c("/a","/b"), normalise = T), np(""))
+  expect_equal(common_path(c("/a","/b"), normalise = T), np("/"))
   expect_equal(common_path(c("/a/b/","/a/b"), normalise = T), np("/a/b"))
   expect_equal(common_path(c("/a/b/d","/a/b/c/d"), normalise = T), np("/a/b"))
   
