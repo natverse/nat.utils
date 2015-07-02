@@ -70,16 +70,20 @@ common_path<-function(paths, normalise=TRUE, fsep=.Platform$file.sep) {
   
   if(length(paths)<2) 
     return(paths)
-  
-  pathfrags <- strsplit(paths, fsep)
-  maxlen=max(sapply(pathfrags, length))
-  if(maxlen<1) return("")
-  
-  for(i in seq_len(maxlen)) {
-    ifrags=sapply(pathfrags, "[", i)
-    if(length(unique(ifrags))>1) break
-  }
-  paste(pathfrags[[1]][seq_len(i-1)], collapse = fsep)
+
+  path_chunks=strsplit(paths,fsep)
+  maxlen=max(sapply(path_chunks, length))
+  # pad cols with NAs to same length
+  path_chunks=lapply(path_chunks, function(x) {length(x)=maxlen;x})
+  # make a char matrix with 1 col per path and one row per chunk
+  m=do.call(cbind, path_chunks)
+  # figure out who is equal row by row
+  num_uniq_values=apply(m, 1, function(x) length(unique(x)))
+  # establish which chunks are different
+  diff_chunks=which(num_uniq_values!=1)
+  first_diff_chunk=min(c(diff_chunks, maxlen+1))
+  # paste the chunks upt to the first different fragment
+  paste(m[seq_len(first_diff_chunk-1), 1], collapse=fsep)
 }
 
 #' Use unix touch utility to change file's timestamp
