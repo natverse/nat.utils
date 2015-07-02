@@ -92,3 +92,14 @@ test_that('RunCmdForNewerInput works',{
   expect_equal(add_two(1, 2), 3, info='expression using function arguments')
 })
 
+
+context("lock functions")
+test_that('lock functions',{
+  lockfile<-tempfile(fileext = '.lock')
+  on.exit(unlink(lockfile))
+  expect_true(makelock(lockfile))
+  expect_false(makelock(lockfile))
+  expect_true(removelock(lockfile))
+  # still true
+  expect_true(removelock(lockfile))
+})
