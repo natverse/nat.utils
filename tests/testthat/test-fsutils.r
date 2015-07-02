@@ -27,7 +27,9 @@ test_that('abs2rel works',{
 })
 
 test_that('touch works',{
-  if(.Platform$OS.type=="unix"){
+  
+  if(.Platform$OS.type!="unix")
+    skip("touch only supported on unix platforms")
     
   tf=replicate(2,tempfile())
   on.exit(unlink(tf))
@@ -55,8 +57,6 @@ test_that('touch works',{
   expect_equal(fis2$mtime,fis$mtime[1],
                info="Change mtime to that of a reference file")
   expect_equal(fis2$atime,fis$atime[2],info="Leave atime intact")
-
-  }
 })
 
 test_that("common_path works",{
