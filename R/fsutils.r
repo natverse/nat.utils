@@ -1,16 +1,14 @@
-#' Make hardlink to file
+#' nat.utils: Defunct functions
 #' 
-#' Used system call to access 'ln' command line utility. Now deprecated in
-#' favour of recently introduced file.link function in base R.
+#' @description These functions have been retired from \code{nat.utils}
 #' @param from Source file
 #' @param to (New) target hardlink file to create
-#' @return logical indicating success
-#' @author jefferis
 #' @export
-#' @seealso \code{\link{file.symlink}}
-file.hardlink=function(from,to){
-  .Deprecated('file.link')
-  file.link(from,to)
+#' @name nat.utils-defunct
+#' @aliases file.hardlink
+#' @seealso \code{\link{file.link}}
+file.hardlink=function(from, to){
+  .Defunct('file.link', package = 'nat.utils')
 }
 
 #' Swap names of two files (by renaming first to a temporary file)
