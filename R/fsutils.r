@@ -38,7 +38,7 @@ file.swap<-function(f1,f2){
 #' @author jefferis
 #' @export
 #' @seealso \code{\link{path.expand}}, \code{\link{normalizePath}}
-#' @family path-functions
+#' @family path_utils
 #' @examples
 #' path = "/Volumes/JData/JPeople/Sebastian/images"
 #' abs2rel(path,'/Volumes/JData')
@@ -84,7 +84,7 @@ abs2rel<-function(path,stempath=getwd(),StopIfNoCommonPath=FALSE){
 #'   eventually end up separated by "\" by default on Windows rather than by 
 #'   "//", which is \code{normalizePath}'s standard behaviour.
 #' @seealso \code{\link{normalizePath}}
-#' @family path-functions
+#' @family path_utils
 #' @examples
 #' common_path(c("/a","/b"))
 #' common_path(c("/a/b/","/a/b"))
@@ -131,6 +131,7 @@ common_path<-function(paths, normalise=FALSE, fsep=.Platform$file.sep) {
 #' @return A character vector with one element for each component in the path 
 #'   (including path separators if \code{include.fseps=TRUE}).
 #' @export
+#' @family path_utils
 #' @examples
 #' split_path("/a/b/c")
 #' split_path("a/b/c")

@@ -28,8 +28,15 @@ Split file path into individual components (optionally including separators)
 \examples{
 split_path("/a/b/c")
 split_path("a/b/c")
-split_path("a/b/c", include.fseps=FALSE)
-split_path("a/b//c",omit.duplicate.fseps=TRUE)
+parts=split_path("/a/b/c", include.fseps=TRUE)
+# join parts back up again
+paste(parts, collapse = "")
+split_path("a/b//c", include.fseps=TRUE, omit.duplicate.fseps=TRUE)
+# Windows style
 split_path("C:\\\\a\\\\b\\\\c", fsep="\\\\")
+}
+\seealso{
+Other path_utils: \code{\link{abs2rel}};
+  \code{\link{common_path}}
 }
 

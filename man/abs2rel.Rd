@@ -29,6 +29,7 @@ jefferis
 \seealso{
 \code{\link{path.expand}}, \code{\link{normalizePath}}
 
-Other path.functions: \code{\link{common_path}}
+Other path_utils: \code{\link{common_path}};
+  \code{\link{split_path}}
 }
 
