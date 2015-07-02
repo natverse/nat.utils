@@ -7,6 +7,7 @@
 #' @author jefferis
 #' @export
 #' @seealso \code{\link{zip}}
+#' @importFrom utils read.table
 zipinfo<-function(f){
   if(length(f)>1) return(sapply(f,zipinfo))
   results=system2(command=unzip(T), args=c("-lv", shQuote(f)), stdout=TRUE)
