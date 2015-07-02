@@ -64,8 +64,9 @@ abs2rel<-function(path,stempath=getwd(),StopIfNoCommonPath=FALSE){
   relpath
 }
 
-common_path<-function(paths, fsep=.Platform$file.sep) {
-  paths=normalizePath(paths, mustWork = F)
+common_path<-function(paths, normalise=TRUE, fsep=.Platform$file.sep) {
+  if(normalise)
+    paths=normalizePath(paths, mustWork = F)
   
   if(length(paths)<2) 
     return(paths)
