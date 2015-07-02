@@ -61,18 +61,18 @@ test_that('touch works',{
 
 test_that("common_path works",{
   pp=c("/a/b/c/d", "/a/b/c")
-  expect_equal(common_path(pp), "/a/b/c")
+  np<-function(x) normalizePath(x, winslash = .Platform$file.sep, mustWork = F)
+  expect_equal(common_path(pp, normalise = F), "/a/b/c")
+  expect_equal(common_path(pp), np("/a/b/c"))
   expect_equal(common_path(c("a","b")), "")
   expect_equal(common_path(c("","")), "")
   expect_equal(common_path(c("","/a")), "")
   expect_equal(common_path(c("/a","/b")), "")
   expect_equal(common_path(c("/a/b/d","/b/c/d")), "")
-  expect_equal(common_path(c("/a/b/","/a/b")), "/a/b")
-  expect_equal(common_path(c("/a/b/d","/a/b/c/d")), "/a/b")
+  expect_equal(common_path(c("/a/b/","/a/b")), np("/a/b"))
+  expect_equal(common_path(c("/a/b/d","/a/b/c/d")), np("/a/b"))
   expect_equal(common_path(c("~/a/b/d","~/a/b/c/d"), normalise = F), "~/a/b")
   expect_equal(common_path(c("~","~/"), normalise = F), "~")
-  expect_equal(common_path(c("~","~/"), normalise = T), 
-               normalizePath("~", winslash = .Platform$file.sep))
-  expect_equal(common_path(c("~/a/b/d","~/a/b/c/d")), 
-               normalizePath("~/a/b", winslash = .Platform$file.sep))
+  expect_equal(common_path(c("~","~/"), normalise = T), np("~"))
+  expect_equal(common_path(c("~/a/b/d","~/a/b/c/d")), np("~/a/b"))
 })
