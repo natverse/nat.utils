@@ -1,6 +1,8 @@
 # nat.utils
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/nat.utils)](http://cran.r-project.org/web/packages/nat.utils) 
+[![Release Version](https://img.shields.io/github/release/jefferis/nat.utils.svg)](https://github.com/jefferis/nat.utils/releases/latest) 
 [![Build Status](https://travis-ci.org/jefferis/nat.utils.png)](https://travis-ci.org/jefferis/nat.utils)
-
+[![Coverage Status](https://img.shields.io/coveralls/jefferis/nat.utils.svg)](https://coveralls.io/r/jefferis/nat.utils?branch=master)
 An R package containing utility functions to support the NeuroAnatomy Toolbox (nat)
 
 ## Background
@@ -26,15 +28,16 @@ packages called `nat.*`.
 From CRAN - the recommended option for simplicity and since this package is not
 under heavy development:
 
-    install.packages("nat.utils")
-
-From our lab repository:
-
-    install.packages("nat.utils",repos='http://jefferislab.org/R',type='source')
+```r
+install.packages("nat.utils")
+```
 
 ### Bleeding Edge
 Straight from github with Hadley Wickham's [devtools](https://github.com/hadley/devtools) package:
 
-    install.packages("devtools")
-    library(devtools)
-    install_github('nat.utils','jefferis')
+```r
+if(!require("devtools")) install.packages("devtools")
+devtools::install_github('nat.utils','jefferis')
+```
+Note: Windows users need [Rtools](http://www.murdoch-sutherland.com/Rtools/) to
+install in this way.
