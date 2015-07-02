@@ -27,7 +27,8 @@ makelock appends a unique message to the lock file and then reads the file
 back in. Only if the unique message is the first line in the file will
 makelock return TRUE.
 
-\code{removelock} displays a warning if lockfile does not exist
+\code{removelock} displays a warning and returns false if lockfile cannot
+ be removed. No error message is given if the file does not exist.
 }
 \examples{
 makelock(lock<-tempfile())

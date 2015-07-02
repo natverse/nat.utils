@@ -4,13 +4,15 @@
 \alias{ncpus}
 \title{Return number of cpus (or a default on failure)}
 \usage{
-ncpus(default = 1)
+ncpus(default = 1L)
 }
 \arguments{
 \item{default}{Number of cores to assume if detectCores fails}
 }
 \value{
 Integer number of cores
+
+integer number of cores always >=1 for default values
 }
 \description{
 Return number of cpus (or a default on failure)
