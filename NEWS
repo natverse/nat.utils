@@ -5,6 +5,7 @@ nat.utils 0.5
   including file separators.
 * file.hardlink is now defunct
 * dev: imports utils::read.table
+* dev: extra tests and code coverage support
 
 nat.utils 0.4.3
 ===============
