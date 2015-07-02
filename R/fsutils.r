@@ -143,6 +143,8 @@ common_path<-function(paths, normalise=FALSE, fsep=.Platform$file.sep) {
 #' split_path("C:\\a\\b\\c", fsep="\\")
 split_path<-function(path, include.fseps=FALSE, omit.duplicate.fseps=FALSE,
                      fsep=.Platform$file.sep) {
+  if(length(path)>1) 
+    stop("I can only handle one path")
   if(nchar(fsep)>1)
     stop("fsep must consist of one character only!")
   

@@ -100,4 +100,7 @@ test_that("split_path works",{
                c("/", "a", "/", "b", "/","c"))
   # Windows style
   expect_equal(split_path("C:\\a\\b\\c", fsep="\\"), c("C:", p1c))
+  
+  # errors
+  expect_error(split_path(c(p1, p1)), 'one path')
 })
