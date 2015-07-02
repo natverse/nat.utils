@@ -6,9 +6,9 @@
 ## R CMD check results
 There were no ERRORs or WARNINGs on any platform.
 
-winbuilder release reported the following NOTE
+winbuilder devel reported the following NOTE
 
-  http://win-builder.r-project.org/1JYwIKl7taEP/00check.log
+  http://win-builder.r-project.org/gOD88TDAN360
 
 Possibly mis-spelled words in DESCRIPTION:
   timestamp (10:5)
