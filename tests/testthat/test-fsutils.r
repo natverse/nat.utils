@@ -86,3 +86,18 @@ test_that("common_path works",{
   expect_equal(common_path(c("~/a/b/d","~/a/b/c/d"), normalise = F), "~/a/b/")
   expect_equal(common_path(c("~/a/b/d","~/a/b/c/d"), normalise = T), np("~/a/b/"))
 })
+
+test_that("split_path works",{
+  p1="/a/b/c"
+  p1c=c("a", "b", "c")
+  expect_equal(split_path(p1), p1c)
+  expect_equal(split_path("a/b/c"), p1c)
+  expect_equal(parts<-split_path(p1, include.fseps=TRUE),
+               c("/", "a", "/", "b", "/","c"))
+  # join parts back up again
+  expect_equal(paste(parts, collapse = ""), p1)
+  expect_equal(split_path("//a/b//c", include.fseps=TRUE, omit.duplicate.fseps=TRUE),
+               c("/", "a", "/", "b", "/","c"))
+  # Windows style
+  expect_equal(split_path("C:\\a\\b\\c", fsep="\\"), c("C:", p1c))
+})
