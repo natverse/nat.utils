@@ -71,6 +71,8 @@ test_that("common_path works",{
   expect_equal(common_path(c("/a/b/d","/a/b/c/d")), "/a/b")
   expect_equal(common_path(c("~/a/b/d","~/a/b/c/d"), normalise = F), "~/a/b")
   expect_equal(common_path(c("~","~/"), normalise = F), "~")
-  expect_equal(common_path(c("~","~/"), normalise = T), path.expand("~"))
-  expect_equal(common_path(c("~/a/b/d","~/a/b/c/d")), path.expand("~/a/b"))
+  expect_equal(common_path(c("~","~/"), normalise = T), 
+               normalizePath("~", winslash = .Platform$file.sep))
+  expect_equal(common_path(c("~/a/b/d","~/a/b/c/d")), 
+               normalizePath("~/a/b", winslash = .Platform$file.sep))
 })
