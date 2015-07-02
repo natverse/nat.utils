@@ -9,7 +9,7 @@ test_that('RunCmdForNewerInput works',{
   on.exit(unlink(tf[1:4]))
   
   expect_false(
-    RunCmdForNewerInput(NULL,infiles=tf[1],outfile=tf[3]),
+    RunCmdForNewerInput(NULL,infiles=tf[1],outfile=tf[3], UseLock = T),
     'one older input file')
   
   expect_true(
