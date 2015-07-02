@@ -4,11 +4,13 @@ Author: Gregory Jefferis
 Version: 0.5
 License: GPL-3
 Title: File System Utility Functions for 'NeuroAnatomy Toolbox'
-Description: Utility functions to support the 'NeuroAnatomy Toolbox' ('nat').
-    Includes functions to provide a basic make style system to update files
-    based on timestamp information and file locking. Convenience functions
-    for working with file paths include 'abs2rel' and 'common_path'. Finally 
-    there are utility functions for working with 'zip' and 'gzip' files.
+Description: Utility functions that may be of general interest but are 
+    specifically required by the 'NeuroAnatomy Toolbox' ('nat'). Includes
+    functions to provide a basic make style system to update files based on
+    timestamp information, file locking and 'touch' utility. Convenience 
+    functions for working with file paths include 'abs2rel', 'split_path' 
+    and 'common_path'. Finally there are utility functions for working with 
+    'zip' and 'gzip' files including integrity tests.
 Suggests:
     testthat (>= 0.9),
     roxygen2,
