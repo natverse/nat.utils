@@ -1,3 +1,7 @@
+nat.utils 0.5
+===============
+* new function common_path finds common prefix of multiple paths
+
 nat.utils 0.4.3
 ===============
 * bugfix: abs2rel handles multiple paths without a warning

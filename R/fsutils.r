@@ -64,6 +64,48 @@ abs2rel<-function(path,stempath=getwd(),StopIfNoCommonPath=FALSE){
   relpath
 }
 
+#' Find common prefix of two or more (normalised) file paths
+#' 
+#' @param paths Character vector of file paths
+#' @param normalise Whether to normalise \code{paths} (with 
+#'   \code{\link{normalizePath}})
+#' @param fsep Optional path separator (defaults to \code{.Platform$file.sep})
+#' @return Character vector of common prefix, \code{""} when there is no common
+#'   prefix, or the original value of \code{paths} when fewer than 2 paths were
+#'   supplied.
+#' @export
+#' @examples
+#' common_path(c("/a","/b"))
+#' common_path(c("/a/b/","/a/b"))
+#' common_path(c("/a/b/d","/a/b/c/d"))
+#' common_path(c("/a/b/d","/b/c/d"))
+#' common_path(c("a","b"))
+#' common_path(c("","/a"))
+#' common_path(c("~","~/"))
+#' common_path(c("~/a/b/d","~/a/b/c/d"), normalise = FALSE)
+#' common_path(c("~","~/"), normalise = FALSE)
+common_path<-function(paths, normalise=TRUE, fsep=.Platform$file.sep) {
+  if(normalise)
+    paths=normalizePath(paths, mustWork = F)
+  
+  if(length(paths)<2) 
+    return(paths)
+
+  path_chunks=strsplit(paths,fsep)
+  maxlen=max(sapply(path_chunks, length))
+  # pad cols with NAs to same length
+  path_chunks=lapply(path_chunks, function(x) {length(x)=maxlen;x})
+  # make a char matrix with 1 col per path and one row per chunk
+  m=do.call(cbind, path_chunks)
+  # figure out who is equal row by row
+  num_uniq_values=apply(m, 1, function(x) length(unique(x)))
+  # establish which chunks are different
+  diff_chunks=which(num_uniq_values!=1)
+  first_diff_chunk=min(c(diff_chunks, maxlen+1))
+  # paste the chunks upt to the first different fragment
+  paste(m[seq_len(first_diff_chunk-1), 1], collapse=fsep)
+}
+
 #' Use unix touch utility to change file's timestamp
 #' 
 #' If neither a time or a reference file is provided then the current time is 

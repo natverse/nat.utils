@@ -58,3 +58,19 @@ test_that('touch works',{
 
   }
 })
+
+test_that("common_path works",{
+  pp=c("/a/b/c/d", "/a/b/c")
+  expect_equal(common_path(pp), "/a/b/c")
+  expect_equal(common_path(c("a","b")), "")
+  expect_equal(common_path(c("","")), "")
+  expect_equal(common_path(c("","/a")), "")
+  expect_equal(common_path(c("/a","/b")), "")
+  expect_equal(common_path(c("/a/b/d","/b/c/d")), "")
+  expect_equal(common_path(c("/a/b/","/a/b")), "/a/b")
+  expect_equal(common_path(c("/a/b/d","/a/b/c/d")), "/a/b")
+  expect_equal(common_path(c("~/a/b/d","~/a/b/c/d"), normalise = F), "~/a/b")
+  expect_equal(common_path(c("~","~/"), normalise = F), "~")
+  expect_equal(common_path(c("~","~/"), normalise = T), path.expand("~"))
+  expect_equal(common_path(c("~/a/b/d","~/a/b/c/d")), path.expand("~/a/b"))
+})
