@@ -18,7 +18,7 @@ gzip.crc<-function(f){
   }
   seek(con,-8,origin='end')
   # TODO check endian issues (what happens if CRC was from opposite endian platform?)
-  crc=readBin(con,integer(),size=4)
+  crc=readBin(con,integer(),size=4, endian = 'little')
   format(as.hexmode(crc),width=8)
 }
 
