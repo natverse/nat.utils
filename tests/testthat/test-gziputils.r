@@ -1,15 +1,12 @@
 context("gzip utility functions")
 
 test_that('digest(,algo="crc32") and gzip.crc agree',{
-  skip_if_not_installed('digest')
-  library(digest)
-  rdsfile=system.file('help/aliases.rds')
-  crc1=gzip.crc(rdsfile)
-  tf=tempfile()
-  on.exit(unlink(tf))
-  saveRDS(readRDS(rdsfile),file=tf,compress=F)
-  crc2=digest(file=tf,algo='crc32')
-  expect_equal(crc1,crc2)
+  gzf=gzfile(tf<-tempfile(), open = 'wb')
+  cat("Hello", file = gzf)
+  close(gzf)
+  # nb digest::digest("Hello", algo = 'crc32',serialize = F)
+  expect_equal(gzip.crc(tf), "f7d18982")
+  unlink(tf)
 })
 
 test_that('is.gzip works',{
