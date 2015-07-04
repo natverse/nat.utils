@@ -1,12 +1,8 @@
 context("gzip utility functions")
 
 test_that('digest(,algo="crc32") and gzip.crc agree',{
-  gzf=gzfile(tf<-tempfile(), open = 'wb')
-  cat("Hello", file = gzf)
-  close(gzf)
-  # nb digest::digest("Hello", algo = 'crc32',serialize = F)
-  expect_equal(gzip.crc(tf), "f7d18982")
-  unlink(tf)
+  # digest::digest("Hello", algo = 'crc32',serialize = F)
+  expect_equal(gzip.crc('testdata/hello.gz'), "f7d18982")
 })
 
 test_that('is.gzip works',{
