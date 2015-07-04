@@ -14,7 +14,7 @@ There were no ERRORs or WARNINGs on any platform.
 
 winbuilder devel reported the following NOTE
 
-  
+  http://win-builder.r-project.org/8YUZnybzk4fu/00check.log
 
 Possibly mis-spelled words in DESCRIPTION:
   timestamp (10:5)
