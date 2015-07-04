@@ -1,7 +1,8 @@
 context("gzip utility functions")
 
 test_that('digest(,algo="crc32") and gzip.crc agree',{
-  require(digest)
+  skip_if_not_installed('digest')
+  library(digest)
   rdsfile=system.file('help/aliases.rds')
   crc1=gzip.crc(rdsfile)
   tf=tempfile()
