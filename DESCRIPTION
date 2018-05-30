@@ -11,6 +11,7 @@ Description: Utility functions that may be of general interest but are
     functions for working with file paths include 'abs2rel', 'split_path' 
     and 'common_path'. Finally there are utility functions for working with 
     'zip' and 'gzip' files including integrity tests.
+Imports: utils
 Suggests:
     testthat (>= 0.9),
     roxygen2
