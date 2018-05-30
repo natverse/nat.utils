@@ -33,10 +33,20 @@ find_extdata <- function(..., package=NULL, firstpath=file.path("inst","extdata"
 #' Make a neuronlist object from two separate files
 #'
 #' @details It is expected that you will use this in an R source file within the
-#'   data folder of a package. See \bold{examples} for more information.
+#'   data folder of a package. See \bold{Examples} for more information.
+#'
+#'   If \code{dfpath} is missing, it will be inferred from \code{datapath}
+#'   according to the following pattern: \itemize{
+#'
+#'   \item \code{myblob.rda} main data file
+#'
+#'   \item \code{myblob.df.rda} metdata file
+#'
+#'   }
 #'
 #' @param datapath Path to the data object
-#' @param dfpath Path to the data.frame object
+#' @param dfpath Path to the data.frame object (constructed from \code{datapath}
+#'   when \code{NULL}, see details)
 #' @param package Character vector naming a package whose extdata directory will
 #'   be sought (with \code{\link{find_extdata}}) and prepended to the two input
 #'   paths.
@@ -58,7 +68,7 @@ find_extdata <- function(..., package=NULL, firstpath=file.path("inst","extdata"
 #' }
 make_nl_from_parts <- function(datapath, dfpath=NULL, package=NULL, ...) {
   if(is.null(dfpath)) {
-    dfpath=paste0(file_path_sans_ext(dfpath), ".df.", file_ext(datapath))
+    dfpath=paste0(file_path_sans_ext(datapath), ".df.", file_ext(datapath))
   }
   if(!is.null(package)) {
     datapath <- find_extdata(datapath, package=package, ...)

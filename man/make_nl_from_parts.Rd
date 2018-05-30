@@ -9,7 +9,8 @@ make_nl_from_parts(datapath, dfpath = NULL, package = NULL, ...)
 \arguments{
 \item{datapath}{Path to the data object}
 
-\item{dfpath}{Path to the data.frame object}
+\item{dfpath}{Path to the data.frame object (constructed from \code{datapath}
+when \code{NULL}, see details)}
 
 \item{package}{Character vector naming a package whose extdata directory will
 be sought (with \code{\link{find_extdata}}) and prepended to the two input
@@ -25,7 +26,16 @@ Make a neuronlist object from two separate files
 }
 \details{
 It is expected that you will use this in an R source file within the
-  data folder of a package. See \bold{examples} for more information.
+  data folder of a package. See \bold{Examples} for more information.
+
+  If \code{dfpath} is missing, it will be inferred from \code{datapath}
+  according to the following pattern: \itemize{
+
+  \item \code{myblob.rda} main data file
+
+  \item \code{myblob.df.rda} metdata file
+
+  }
 }
 \examples{
 \dontrun{
