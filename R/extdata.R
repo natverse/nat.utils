@@ -1,10 +1,10 @@
 #' Construct paths to files in the extdata folder of a package
 #'
-#' @details \code{inst/extdata} is the conventional place to store data this is
+#' @details \code{inst/extdata} is the conventional place to store data that is
 #'   not managed directly by the standard R package mechanisms. Unfortunately
 #'   its location changes at different stages of the package build/load process,
-#'   since in the final package all folders under \code{inst} are installed
-#'   directly under the package root.
+#'   since in the final  package all folders underneath \code{inst} are moved
+#'   directly to the package root.
 #'
 #' @param ... components of the path (eventually appended to location of
 #'   \code{extdata})
