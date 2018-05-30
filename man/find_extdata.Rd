@@ -31,6 +31,6 @@ Construct paths to files in the extdata folder of a package
 find_extdata(package='nat.utils')
 }
 \seealso{
-Other extdata: \code{\link{make_nl_from_parts}},
+Other extdata: \code{\link{read_nl_from_parts}},
   \code{\link{save_nl_in_parts}}
 }

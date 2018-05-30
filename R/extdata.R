@@ -59,14 +59,14 @@ find_extdata <- function(..., package=NULL, firstpath=file.path("inst","extdata"
 #' \dontrun{
 #' # you could use the following in a file
 #' # data/make_data.R
-#' delayedAssign('pns', make_nl_from_parts('pns.rds', package='testlazyneuronlist')))
+#' delayedAssign('pns', read_nl_from_parts('pns.rds', package='testlazyneuronlist')))
 #' # based on objects created by
 #' save_nl_in_parts(pns)
 #' # which would make:
 #' # - inst/extdata/pns.rds
 #' # - inst/extdata/pns.df.rds
 #' }
-make_nl_from_parts <- function(datapath, dfpath=NULL, package=NULL, ...) {
+read_nl_from_parts <- function(datapath, dfpath=NULL, package=NULL, ...) {
   if(is.null(dfpath)) {
     dfpath=paste0(file_path_sans_ext(datapath), ".df.", file_ext(datapath))
   }
