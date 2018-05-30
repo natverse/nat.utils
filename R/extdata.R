@@ -14,6 +14,7 @@
 #' @return A character vector containing the constructed path
 #' @export
 #' @importFrom utils file_test
+#' @family extdata
 #' @examples
 #' find_extdata(package='nat.utils')
 find_extdata <- function(..., package=NULL, firstpath=file.path("inst","extdata")) {
@@ -31,21 +32,140 @@ find_extdata <- function(..., package=NULL, firstpath=file.path("inst","extdata"
 
 #' Make a neuronlist object from two separate files
 #'
+#' @details It is expected that you will use this in an R source file within the
+#'   data folder of a package. See \bold{examples} for more information.
+#'
 #' @param datapath Path to the data object
 #' @param dfpath Path to the data.frame object
-#' @param extdata_package Character vector naming a package whose extdata
-#'   directory will be sought (with \code{\link{find_extdata}}) and prepended to
-#'   the two input paths.
+#' @param package Character vector naming a package whose extdata directory will
+#'   be sought (with \code{\link{find_extdata}}) and prepended to the two input
+#'   paths.
 #' @param ... Additional arguments passd to \code{\link{find_extdata}}
 #' @return a \code{neuronlist} object
 #' @export
-make_nl_from_parts <- function(datapath, dfpath, extdata_package=NULL, ...) {
-  if(!is.null(extdata_package)) {
-    datapath <- find_extdata(datapath, package=extdata_package, ...)
-    dfpath <- find_extdata(dfpath, package=extdata_package, ...)
+#' @importFrom tools file_ext file_path_sans_ext
+#' @family extdata
+#' @examples
+#' \dontrun{
+#' # you could use the following in a file
+#' # data/make_data.R
+#' delayedAssign('pns', make_nl_from_parts('pns.rds', package='testlazyneuronlist')))
+#' # based on objects created by
+#' save_nl_in_parts(pns)
+#' # which would make:
+#' # - inst/extdata/pns.rds
+#' # - inst/extdata/pns.df.rds
+#' }
+make_nl_from_parts <- function(datapath, dfpath=NULL, package=NULL, ...) {
+  if(is.null(dfpath)) {
+    dfpath=paste0(file_path_sans_ext(dfpath), ".df.", file_ext(datapath))
   }
-  x <- readRDS(datapath)
-  df <- readRDS(dfpath)
+  if(!is.null(package)) {
+    datapath <- find_extdata(datapath, package=package, ...)
+    dfpath <- find_extdata(dfpath, package=package, ...)
+  }
+  x <- read_data(datapath)
+  df <- read_data(dfpath)
   attr(x, 'df') <- df
   x
+}
+
+#' Save a neuronlist object into separate data and metadata parts
+#'
+#' @details Saves a neuronlist into separate data and metadata parts. This can
+#'   significantly mitigate git repository bloat since only the metadata object
+#'   will change when any metadata is updated. By default the objects will be
+#'   saved into the package \code{inst/extdata} folder with sensible names based
+#'   on the incoming object. E.g. if \code{x=mypns} the files will be \itemize{
+#'
+#'   \item mypns.rds
+#'
+#'   \item mypns.df.rds
+#'
+#'   }
+#' @param x A neuronlist object to save in separate parts
+#' @param datapath Optional path to new data file (constructed from name of
+#'   \code{x} argument when missing)
+#' @param dfpath Optional path to new metadata file (constructed from
+#'   \code{datapath} when missing)
+#' @param extdata Logical indicating whether the files should be saved into
+#'   extdata folder (default \code{TRUE}, when \code{FALSE} the paths are
+#'   untouched)
+#' @param format Either \code{'rds'} (default) or \code{'rda'}.
+#' @param ... Additional arguments passed to \code{\link{saveRDS}} or
+#'   \code{\link{save}} (based on the value of \code{format}).
+#' @return character vector with path to the saved files (returned invisibly)
+#' @importFrom utils file_test
+#' @importFrom tools file_ext file_path_sans_ext
+#' @family extdata
+#' @export
+#' @examples
+#' \dontrun{
+#' save_nl_in_parts(pns)
+#' # which would make:
+#' # - inst/extdata/pns.rds
+#' # - inst/extdata/pns.df.rds
+#'
+#' save_nl_in_parts(pns, format='rda')
+#' # which would make:
+#' # - inst/extdata/pns.rda
+#' # - inst/extdata/pns.df.rda
+#'
+#' save_nl_in_parts(pns, 'mypns.rda')
+#' # which would make (NB format argument wins):
+#' # - inst/extdata/mypns.rds
+#' # - inst/extdata/mypns.df.rds
+#' }
+save_nl_in_parts <- function(x, datapath=NULL, dfpath=NULL, extdata=T, format=c("rds", "rda"), ...) {
+  if(!inherits(x, 'neuronlist')) 
+    stop("I don't know what to do with objects of class: ", class(x))
+  format=match.arg(format)
+  dataname <- if(is.null(datapath)) {
+    deparse(substitute(x))
+  } else {
+    if(file_ext(datapath)%in%c("rds",'rda')) file_path_sans_ext(datapath) else datapath
+  }
+  dfname <- if(is.null(dfpath)) {
+    paste0(dataname,".df")
+  } else {
+    if(file_ext(dfpath)%in%c("rds",'rda')) file_path_sans_ext(dfpath) else dfpath
+  }
+  
+  datapath=paste0(dataname, ".", format)
+  dfpath=paste0(dfname, ".", format)
+  dataname <- basename(dataname)
+  dfname <- basename(dfname)
+  
+  if(extdata) {
+    edp <- file.path('inst/extdata') 
+    if(!file_test('-d', edp))
+      stop("Folder", edp, "doesn't exist. Please create it!")
+    datapath=file.path(edp, datapath)
+    dfpath=file.path(edp, dfpath)
+  }
+  
+  if(format=="rda") {
+    assign(dfname, attr(x, 'df'))
+    save(list = dfname, file=dfpath, ...)
+    attr(x, 'df') <- NULL
+    assign(dataname, x)
+    save(list = dataname, file=datapath, ...)
+  } else {
+    saveRDS(attr(x,'df'), file = dfpath, ...)
+    attr(x, 'df') <- NULL
+    saveRDS(x, file = datapath, ...)
+  }
+  invisible(c(datapath, dfpath))
+}
+
+#' @importFrom tools file_ext
+read_data <- function(x) {
+  if(file_ext(x)=='rda') {
+    e <- new.env()
+    names=load(x, envir = e)
+    if(length(names)>1) warning("There is more than one object saved in:", x)
+    get(names, envir=e)
+  } else {
+    readRDS(x)
+  }
 }
