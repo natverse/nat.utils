@@ -10,6 +10,7 @@
 #'   \code{extdata})
 #' @param package The package to search
 #' @param firstpath A hint for the first place to look
+#' @param Verbose Whether to print messages about failed paths while looking for extdata
 #'
 #' @return A character vector containing the constructed path
 #' @export
@@ -17,16 +18,29 @@
 #' @family extdata
 #' @examples
 #' find_extdata(package='nat.utils')
-find_extdata <- function(..., package=NULL, firstpath=file.path("inst","extdata")) {
+find_extdata <- function(..., package=NULL, firstpath=file.path("inst","extdata"), Verbose=FALSE) {
   p <- firstpath
-  if (!file_test('-d', p)) {
+  owd <- getwd()
+  on.exit(setwd(owd))
+  found <- FALSE
+  found <- file_test('-d', p)
+  if(!found && basename(owd)=="data") {
+    if(Verbose)
+      message("couldn't find path: ", p, " from location: ", getwd())
+    p <- file.path(dirname(owd), p)
+    found <- file_test('-d', p)
+  } 
+  if(!found) {
+    if(Verbose)
+      message("couldn't find path: ", p)
     p <- try(system.file('extdata',
                          package = package,
                          mustWork = T),
              silent = T)
-    if(inherits(p, 'try-error'))
-      stop("Cannot find extdata in local file hierarchy or installed package!")
+    found <- !inherits(p, 'try-error')
   }
+  if(!found)
+    stop("Cannot find extdata in installed package!")
   file.path(p, ...)
 }
 

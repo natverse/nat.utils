@@ -4,7 +4,8 @@
 \alias{find_extdata}
 \title{Construct paths to files in the extdata folder of a package}
 \usage{
-find_extdata(..., package = NULL, firstpath = file.path("inst", "extdata"))
+find_extdata(..., package = NULL, firstpath = file.path("inst", "extdata"),
+  Verbose = FALSE)
 }
 \arguments{
 \item{...}{components of the path (eventually appended to location of
@@ -13,6 +14,8 @@ find_extdata(..., package = NULL, firstpath = file.path("inst", "extdata"))
 \item{package}{The package to search}
 
 \item{firstpath}{A hint for the first place to look}
+
+\item{Verbose}{Whether to print messages about failed paths while looking for extdata}
 }
 \value{
 A character vector containing the constructed path
