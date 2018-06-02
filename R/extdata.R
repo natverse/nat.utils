@@ -235,3 +235,23 @@ read_data <- function(x) {
     readRDS(x)
   }
 }
+
+# for testing purposes
+make_fake_package <- function(basedir=tempfile(), package='lhns', 
+                              inside_library=FALSE, as_installed=inside_library) {
+  p <- basedir
+  if(inside_library) p <- file.path(p, 'library')
+  packdir <- p <- file.path(p, package)
+  if(!as_installed) p <- file.path(p, 'inst')
+  p <- file.path(p, 'extdata')
+  # <pkg>/extdata
+  dir.create(p, recursive = T)
+  # <pkg>/data
+  dir.create(file.path(packdir, 'data'), recursive = T)
+  # <pkg>/DESCRIPTION
+  # we need this to trick find.package
+  desc=c("Package: rhubarb", "Version: 1.0")
+  writeLines(desc, con = file.path(packdir, 'DESCRIPTION'))
+  c(base=basedir, package=packdir, extdata=p)
+}
+
