@@ -67,7 +67,7 @@ find_extdata <- function(..., package=NULL, firstpath=NULL, Verbose=FALSE) {
   }
 
   # sometimes we end up in the folder one up from the package for some reason
-  if(isTRUE(basename(owd)==package)) {
+  if(isTRUE(package%in%dir(owd))) {
     p <- check_dirs(file.path(package, paths))
     if(length(p)) return(file.path(p, ...))
   }
