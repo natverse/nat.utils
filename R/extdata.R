@@ -9,8 +9,9 @@
 #' @param ... components of the path (eventually appended to location of
 #'   \code{extdata})
 #' @param package The package to search
-#' @param firstpath A hint for the first place to look
-#' @param Verbose Whether to print messages about failed paths while looking for extdata
+#' @param firstpath An additional location to check before looking anywhere else
+#' @param Verbose Whether to print messages about failed paths while looking for
+#'   extdata
 #'
 #' @return A character vector containing the constructed path
 #' @export
@@ -18,46 +19,64 @@
 #' @family extdata
 #' @examples
 #' find_extdata(package='nat.utils')
-find_extdata <- function(..., package=NULL, firstpath=file.path("inst","extdata"), Verbose=FALSE) {
-  p <- firstpath
-  owd <- getwd()
-  on.exit(setwd(owd))
-  tried <- firstpath
-  found <- FALSE
-  found <- file_test('-d', p)
-  if(!found && basename(owd)=="data") {
-    if(Verbose)
-      message("couldn't find path: ", p, " from location: ", getwd())
-    p <- file.path(dirname(owd), p)
-    tried <- append(tried, p)
-    found <- file_test('-d', p)
-  } 
-  if (!found) {
-    if (is.null(package)) {
-      stop(
-        "Cannot find extdata in local dir and no package argument specified!\n",
-        "Current location: ", getwd(), "\n",
-        "Checked: ",
-        paste(tried, collapse = "\n")
-      )
-    }
+find_extdata <- function(..., package=NULL, firstpath=NULL, Verbose=FALSE) {
+  paths <- c('inst/extdata', 'extdata')
+  
+  tried <- data.frame(wd=character(), path=character(), found=logical(), stringsAsFactors = F)
+  
+  check_dirs <- function(x, wd = getwd()) {
+    owd = setwd(wd)
+    on.exit(setwd(owd))
     
-    if(Verbose)
-      message("couldn't find path: ", p)
-    tried <- append(tried, system.file('extdata', package = package))
-    p <- try(system.file('extdata',
-                         package = package,
-                         mustWork = T),
-             silent = T)
-    found <- !inherits(p, 'try-error')
+    found <- FALSE
+    for (p in x) {
+      found <- file_test('-d', p)
+      add_tried(p, found)
+      if (found)
+        return(p)
+    }
+    NULL
   }
-  if(!found) {
-    stop("Cannot find extdata in local dir or installed package!\n",
-         "Current location: ", getwd(), "\n",
-         "Checked: ", paste(tried, collapse = "\n"))
+  
+  add_tried <- function(path, found = F) {
+    ntried = nrow(tried)
+    tried <<- rbind(tried,
+                  data.frame(
+                    wd = getwd(),
+                    path = path,
+                    found = found,
+                    stringsAsFactors = F
+                  ))
   }
+  
+  p <- check_dirs(union(firstpath, paths))
+  if(length(p)) return(file.path(p, ...))
+  
+  
+  owd <- getwd()
+  if(isTRUE(basename(owd)=="data")) {
+    p <- check_dirs(paths, dirname(owd))
+    if(length(p)) return(file.path(p, ...))
+  }
+
+  if (is.null(package)) {
+    stop(
+      "Cannot find extdata in local dir and no package argument specified!\n",
+      "Current location: ", getwd(), "\n",
+      "Checked: ", paste("wd:", tried$wd, "path:", tried$path, collapse = "\n"))
+  }
+
+  packp <- try(system.file('extdata', package = package))
+  p <- check_dirs(packp)
+  if(length(p)) return(file.path(p, ...))
+  stop("Cannot find extdata in local dir or installed package!\n",
+       "Current location: ", getwd(), "\n",
+       "Checked: ", paste("wd:", tried$wd, "path:", tried$path, collapse = "\n"))
+  
   file.path(p, ...)
 }
+
+
 
 #' Make a neuronlist object from two separate files
 #'
