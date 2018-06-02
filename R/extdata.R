@@ -52,10 +52,9 @@ find_extdata <- function(..., package=NULL, firstpath=NULL, Verbose=FALSE) {
   p <- check_dirs(union(firstpath, paths))
   if(length(p)) return(file.path(p, ...))
   
-  
   owd <- getwd()
   if(isTRUE(basename(owd)=="data")) {
-    p <- check_dirs(paths, dirname(owd))
+    p <- check_dirs(file.path(normalizePath(dirname(owd)), paths))
     if(length(p)) return(file.path(p, ...))
   }
 
