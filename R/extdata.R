@@ -22,25 +22,40 @@ find_extdata <- function(..., package=NULL, firstpath=file.path("inst","extdata"
   p <- firstpath
   owd <- getwd()
   on.exit(setwd(owd))
+  tried <- firstpath
   found <- FALSE
   found <- file_test('-d', p)
   if(!found && basename(owd)=="data") {
     if(Verbose)
       message("couldn't find path: ", p, " from location: ", getwd())
     p <- file.path(dirname(owd), p)
+    tried <- append(tried, p)
     found <- file_test('-d', p)
   } 
-  if(!found) {
+  if (!found) {
+    if (is.null(package)) {
+      stop(
+        "Cannot find extdata in local dir and no package argument specified!\n",
+        "Current location: ", getwd(), "\n",
+        "Checked: ",
+        paste(tried, collapse = "\n")
+      )
+    }
+    
     if(Verbose)
       message("couldn't find path: ", p)
+    tried <- append(tried, system.file('extdata', package = package))
     p <- try(system.file('extdata',
                          package = package,
                          mustWork = T),
              silent = T)
     found <- !inherits(p, 'try-error')
   }
-  if(!found)
-    stop("Cannot find extdata in installed package!")
+  if(!found) {
+    stop("Cannot find extdata in local dir or installed package!\n",
+         "Current location: ", getwd(), "\n",
+         "Checked: ", paste(tried, collapse = "\n"))
+  }
   file.path(p, ...)
 }
 
