@@ -63,14 +63,17 @@ find_extdata <- function(..., package=NULL, firstpath=NULL, Verbose=FALSE) {
     stop(
       "Cannot find extdata in local dir and no package argument specified!\n",
       "Current location: ", getwd(), "\n",
+      "Current folder contents: ", paste(dir(all.files = T), collapse=" "), "\n",
       "Checked: ", paste("wd:", tried$wd, "path:", tried$path, collapse = "\n"))
   }
 
-  packp <- try(system.file('extdata', package = package))
-  p <- check_dirs(packp)
+  packp <- try(system.file(package = package))
+  pack_extdata <- file.path(packp, "extdata")
+  p <- check_dirs(pack_extdata)
   if(length(p)) return(file.path(p, ...))
   stop("Cannot find extdata in local dir or installed package!\n",
        "Current location: ", getwd(), "\n",
+       "Current folder contents: ", paste(dir(all.files = T), collapse=" "), "\n",
        "Checked: ", paste("wd:", tried$wd, "path:", tried$path, collapse = "\n"))
   
   file.path(p, ...)
