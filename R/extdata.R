@@ -66,6 +66,12 @@ find_extdata <- function(..., package=NULL, firstpath=NULL, Verbose=FALSE) {
       "Checked: ", paste("wd:", tried$wd, "path:", tried$path, collapse = "\n"))
   }
 
+  # sometimes we end up in the folder one up from the package for some reason
+  if(isTRUE(basename(owd)==package)) {
+    p <- check_dirs(file.path(package, paths))
+    if(length(p)) return(file.path(p, ...))
+  }
+
   packp <- try(system.file(package = package))
   pack_extdata <- file.path(packp, "extdata")
   p <- check_dirs(pack_extdata)
