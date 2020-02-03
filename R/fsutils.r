@@ -113,7 +113,13 @@ common_path<-function(paths, normalise=FALSE, fsep=.Platform$file.sep) {
   diff_chunks=which(num_uniq_values!=1)
   first_diff_chunk=min(c(diff_chunks, maxlen+1))
   # paste the chunks upt to the first different fragment
-  paste(m[seq_len(first_diff_chunk-1), 1], collapse="")
+  outpath=paste(m[seq_len(first_diff_chunk-1), 1], collapse="")
+  # renormalise path to overcome subtle issue on Windows 
+  # where normalisation gives different values for e.g. C:\ 
+  # when it is part of a longer path than when it is on its own
+  if(normalise) 
+    normalizePath(outpath, mustWork = F, winslash = fsep)
+  else outpath
 }
 
 
