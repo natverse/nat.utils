@@ -4,8 +4,13 @@
 \alias{touch}
 \title{Use unix touch utility to change file's timestamp}
 \usage{
-touch(file, time, reference, timestoupdate = c("access", "modification"),
-  Create = TRUE)
+touch(
+  file,
+  time,
+  reference,
+  timestoupdate = c("access", "modification"),
+  Create = TRUE
+)
 }
 \arguments{
 \item{file}{Path to file to modify}

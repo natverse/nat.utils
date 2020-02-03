@@ -4,8 +4,14 @@
 \alias{save_nl_in_parts}
 \title{Save a neuronlist object into separate data and metadata parts}
 \usage{
-save_nl_in_parts(x, datapath = NULL, dfpath = NULL, extdata = T,
-  format = c("rds", "rda"), ...)
+save_nl_in_parts(
+  x,
+  datapath = NULL,
+  dfpath = NULL,
+  extdata = T,
+  format = c("rds", "rda"),
+  ...
+)
 }
 \arguments{
 \item{x}{A neuronlist object to save in separate parts}
@@ -63,6 +69,8 @@ save_nl_in_parts(pns, 'mypns.rda')
 }
 }
 \seealso{
-Other extdata: \code{\link{find_extdata}},
-  \code{\link{read_nl_from_parts}}
+Other extdata: 
+\code{\link{find_extdata}()},
+\code{\link{read_nl_from_parts}()}
 }
+\concept{extdata}

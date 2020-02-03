@@ -46,6 +46,8 @@ common_path(c("~","~/"), normalise = FALSE)
 \seealso{
 \code{\link{normalizePath}}
 
-Other path_utils: \code{\link{abs2rel}},
-  \code{\link{split_path}}
+Other path_utils: 
+\code{\link{abs2rel}()},
+\code{\link{split_path}()}
 }
+\concept{path_utils}

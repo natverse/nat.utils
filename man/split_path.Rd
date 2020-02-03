@@ -4,8 +4,12 @@
 \alias{split_path}
 \title{Split file path into individual components (optionally including separators)}
 \usage{
-split_path(path, include.fseps = FALSE, omit.duplicate.fseps = FALSE,
-  fsep = .Platform$file.sep)
+split_path(
+  path,
+  include.fseps = FALSE,
+  omit.duplicate.fseps = FALSE,
+  fsep = .Platform$file.sep
+)
 }
 \arguments{
 \item{path}{A path with directories separated by \code{fsep}s.}
@@ -38,6 +42,8 @@ split_path("C:\\\\a\\\\b\\\\c", fsep="\\\\")
 \seealso{
 \code{\link{file.path}}
 
-Other path_utils: \code{\link{abs2rel}},
-  \code{\link{common_path}}
+Other path_utils: 
+\code{\link{abs2rel}()},
+\code{\link{common_path}()}
 }
+\concept{path_utils}

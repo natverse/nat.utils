@@ -21,8 +21,10 @@ Verify integrity of one or more zip files
 Uses system unzip command.
 }
 \seealso{
-Other ziputils: \code{\link{zipinfo}}
+Other ziputils: 
+\code{\link{zipinfo}()}
 }
 \author{
 jefferis
 }
+\concept{ziputils}

@@ -3,7 +3,6 @@
 \docType{package}
 \name{nat.utils}
 \alias{nat.utils}
-\alias{nat.utils-package}
 \title{nat.utils: File System Utility Functions for NeuroAnatomy Toolbox}
 \description{
 Utility functions to support the NeuroAnatomy Toolbox (nat).

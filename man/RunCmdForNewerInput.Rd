@@ -4,8 +4,16 @@
 \alias{RunCmdForNewerInput}
 \title{Run a command if input files are newer than outputs}
 \usage{
-RunCmdForNewerInput(cmd, infiles, outfiles, Verbose = FALSE,
-  UseLock = FALSE, Force = FALSE, ReturnInputTimes = FALSE, ...)
+RunCmdForNewerInput(
+  cmd,
+  infiles,
+  outfiles,
+  Verbose = FALSE,
+  UseLock = FALSE,
+  Force = FALSE,
+  ReturnInputTimes = FALSE,
+  ...
+)
 }
 \arguments{
 \item{cmd}{An \code{\link{expression}}, a string or NA/NULL}

@@ -50,6 +50,8 @@ save_nl_in_parts(pns)
 }
 }
 \seealso{
-Other extdata: \code{\link{find_extdata}},
-  \code{\link{save_nl_in_parts}}
+Other extdata: 
+\code{\link{find_extdata}()},
+\code{\link{save_nl_in_parts}()}
 }
+\concept{extdata}

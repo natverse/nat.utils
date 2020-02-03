@@ -15,6 +15,6 @@ Imports: utils
 Suggests:
     testthat (>= 0.9),
     roxygen2
-RoxygenNote: 6.0.1
+RoxygenNote: 7.0.2
 Encoding: UTF-8
 ByteCompile: true
