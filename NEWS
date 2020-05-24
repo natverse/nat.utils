@@ -1,4 +1,4 @@
-nat.utils 0.5
+nat.utils 0.5.1
 ===============
 * fixes gzip.crc bug on solaris (#8, thanks to Brian Ripley)
 * dev: simplify gzip.crc test and therefore no longer depend on digest
