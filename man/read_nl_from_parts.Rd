@@ -41,7 +41,7 @@ It is expected that you will use this in an R source file within the
 \dontrun{
 # you could use the following in a file
 # data/make_data.R
-delayedAssign('pns', read_nl_from_parts('pns.rds', package='testlazyneuronlist')))
+delayedAssign('pns', read_nl_from_parts('pns.rds', package='testlazyneuronlist'))
 # based on objects created by
 save_nl_in_parts(pns)
 # which would make:
