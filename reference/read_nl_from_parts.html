@@ -161,7 +161,16 @@ paths.</p></td>
 <code><a href='save_nl_in_parts.html'>save_nl_in_parts</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'># you could use the following in a file</span>
+<span class='co'># data/make_data.R</span>
+<span class='fu'><a href='https://rdrr.io/r/base/delayedAssign.html'>delayedAssign</a></span>(<span class='st'>'pns'</span>, <span class='fu'>read_nl_from_parts</span>(<span class='st'>'pns.rds'</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>'testlazyneuronlist'</span>))
+<span class='co'># based on objects created by</span>
+<span class='fu'><a href='save_nl_in_parts.html'>save_nl_in_parts</a></span>(<span class='no'>pns</span>)
+<span class='co'># which would make:</span>
+<span class='co'># - inst/extdata/pns.rds</span>
+<span class='co'># - inst/extdata/pns.df.rds</span>
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
