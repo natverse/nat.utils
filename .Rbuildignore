@@ -4,3 +4,7 @@
 ^appveyor\.yml$
 ^cran-comments\.md$
 ^tic\.R$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
