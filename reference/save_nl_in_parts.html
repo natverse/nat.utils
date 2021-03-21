@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -92,7 +92,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/natverse/nat.utils/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -107,7 +112,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Save a neuronlist object into separate data and metadata parts</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/natverse/nat.utils/blob/master/R/extdata.R'><code>R/extdata.R</code></a></small>
     <div class="hidden name"><code>save_nl_in_parts.Rd</code></div>
     </div>
 
@@ -115,14 +120,14 @@
     <p>Save a neuronlist object into separate data and metadata parts</p>
     </div>
 
-    <pre class="usage"><span class='fu'>save_nl_in_parts</span>(
-  <span class='no'>x</span>,
-  <span class='kw'>datapath</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>dfpath</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>extdata</span> <span class='kw'>=</span> <span class='no'>T</span>,
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"rds"</span>, <span class='st'>"rda"</span>),
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>save_nl_in_parts</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  datapath <span class='op'>=</span> <span class='cn'>NULL</span>,
+  dfpath <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extdata <span class='op'>=</span> <span class='cn'>T</span>,
+  format <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"rds"</span>, <span class='st'>"rda"</span><span class='op'>)</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -179,22 +184,23 @@ untouched)</p></td>
 <code><a href='read_nl_from_parts.html'>read_nl_from_parts</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>save_nl_in_parts</span>(<span class='no'>pns</span>)
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>save_nl_in_parts</span><span class='op'>(</span><span class='va'>pns</span><span class='op'>)</span>
 <span class='co'># which would make:</span>
 <span class='co'># - inst/extdata/pns.rds</span>
 <span class='co'># - inst/extdata/pns.df.rds</span>
 
-<span class='fu'>save_nl_in_parts</span>(<span class='no'>pns</span>, <span class='kw'>format</span><span class='kw'>=</span><span class='st'>'rda'</span>)
+<span class='fu'>save_nl_in_parts</span><span class='op'>(</span><span class='va'>pns</span>, format<span class='op'>=</span><span class='st'>'rda'</span><span class='op'>)</span>
 <span class='co'># which would make:</span>
 <span class='co'># - inst/extdata/pns.rda</span>
 <span class='co'># - inst/extdata/pns.df.rda</span>
 
-<span class='fu'>save_nl_in_parts</span>(<span class='no'>pns</span>, <span class='st'>'mypns.rda'</span>)
+<span class='fu'>save_nl_in_parts</span><span class='op'>(</span><span class='va'>pns</span>, <span class='st'>'mypns.rda'</span><span class='op'>)</span>
 <span class='co'># which would make (NB format argument wins):</span>
 <span class='co'># - inst/extdata/mypns.rds</span>
 <span class='co'># - inst/extdata/mypns.df.rds</span>
-}</div></pre>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -210,7 +216,7 @@ untouched)</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

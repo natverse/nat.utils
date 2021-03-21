@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -92,7 +92,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/natverse/nat.utils/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -107,7 +112,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Construct paths to files in the extdata folder of a package</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/natverse/nat.utils/blob/master/R/extdata.R'><code>R/extdata.R</code></a></small>
     <div class="hidden name"><code>find_extdata.Rd</code></div>
     </div>
 
@@ -115,7 +120,7 @@
     <p>Construct paths to files in the extdata folder of a package</p>
     </div>
 
-    <pre class="usage"><span class='fu'>find_extdata</span>(<span class='no'>...</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>firstpath</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>Verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>find_extdata</span><span class='op'>(</span><span class='va'>...</span>, package <span class='op'>=</span> <span class='cn'>NULL</span>, firstpath <span class='op'>=</span> <span class='cn'>NULL</span>, Verbose <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -157,7 +162,8 @@ extdata</p></td>
 <code><a href='save_nl_in_parts.html'>save_nl_in_parts</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>find_extdata</span>(<span class='kw'>package</span><span class='kw'>=</span><span class='st'>'nat.utils'</span>)</div><div class='output co'>#&gt; [1] "/tmp/RtmpZB7ssJ/temp_libpath3a48524743a6/nat.utils/extdata"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>find_extdata</span><span class='op'>(</span>package<span class='op'>=</span><span class='st'>'nat.utils'</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "/Users/runner/work/_temp/Library/nat.utils/extdata"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -173,7 +179,7 @@ extdata</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

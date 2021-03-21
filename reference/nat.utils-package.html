@@ -6,7 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Return information about a zip archive using system unzip command — zipinfo • nat.utils</title>
+<title>Utility functions to support the NeuroAnatomy Toolbox (nat).
+Includes functions to provide a basic make style system to update files
+based on timestamp information, file locking and other convenience functions
+for working with the filesystem — nat.utils-package • nat.utils</title>
 
 
 <!-- jquery -->
@@ -39,8 +42,18 @@
 
 
 
-<meta property="og:title" content="Return information about a zip archive using system unzip command — zipinfo" />
-<meta property="og:description" content="Return information about a zip archive using system unzip command" />
+<meta property="og:title" content="Utility functions to support the NeuroAnatomy Toolbox (nat).
+Includes functions to provide a basic make style system to update files
+based on timestamp information, file locking and other convenience functions
+for working with the filesystem — nat.utils-package" />
+<meta property="og:description" content="Utility functions that may be of general interest
+    but are specifically required by the 'NeuroAnatomy Toolbox' ('nat').
+    Includes functions to provide a basic make style system to update
+    files based on timestamp information, file locking and 'touch'
+    utility. Convenience functions for working with file paths include
+    'abs2rel', 'split_path' and 'common_path'. Finally there are utility
+    functions for working with 'zip' and 'gzip' files including integrity
+    tests." />
 
 
 
@@ -111,40 +124,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Return information about a zip archive using system unzip command</h1>
-    <small class="dont-index">Source: <a href='https://github.com/natverse/nat.utils/blob/master/R/ziputils.r'><code>R/ziputils.r</code></a></small>
-    <div class="hidden name"><code>zipinfo.Rd</code></div>
+    <h1>Utility functions to support the NeuroAnatomy Toolbox (nat).
+Includes functions to provide a basic make style system to update files
+based on timestamp information, file locking and other convenience functions
+for working with the filesystem</h1>
+    <small class="dont-index">Source: <a href='https://github.com/natverse/nat.utils/blob/master/R/nat.utils-package.r'><code>R/nat.utils-package.r</code></a></small>
+    <div class="hidden name"><code>nat.utils-package.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Return information about a zip archive using system unzip command</p>
+    <p>Utility functions that may be of general interest
+    but are specifically required by the 'NeuroAnatomy Toolbox' ('nat').
+    Includes functions to provide a basic make style system to update
+    files based on timestamp information, file locking and 'touch'
+    utility. Convenience functions for working with file paths include
+    'abs2rel', 'split_path' and 'common_path'. Finally there are utility
+    functions for working with 'zip' and 'gzip' files including integrity
+    tests.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>zipinfo</span><span class='op'>(</span><span class='va'>f</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>f</th>
-      <td><p>Path to one (or more) files</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>dataframe of information</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Uses system unzip command.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://rdrr.io/r/utils/zip.html'>zip</a></code></p>
-<p>Other ziputils: 
-<code><a href='zipok.html'>zipok</a>()</code></p></div>
+    <div class='dont-index'><p>nat</p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>jefferis</p>
+    <p><strong>Maintainer</strong>: Gregory Jefferis <a href='mailto:jefferis@gmail.com'>jefferis@gmail.com</a> (<a href='https://orcid.org/0000-0002-0587-9355'>ORCID</a>)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

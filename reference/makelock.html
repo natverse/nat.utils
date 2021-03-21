@@ -87,7 +87,7 @@ removelock displays a warning and returns false if lockfile cannot
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -99,7 +99,12 @@ removelock displays a warning and returns false if lockfile cannot
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/natverse/nat.utils/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -114,7 +119,7 @@ removelock displays a warning and returns false if lockfile cannot
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Make and remove (NFS safe) lock files</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/natverse/nat.utils/blob/master/R/filelocks.r'><code>R/filelocks.r</code></a></small>
     <div class="hidden name"><code>makelock.Rd</code></div>
     </div>
 
@@ -129,9 +134,9 @@ makelock return TRUE.</p>
  be removed. No error message is given if the file does not exist.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>makelock</span>(<span class='no'>lockfile</span>, <span class='no'>lockmsg</span>, <span class='kw'>CreateDirectories</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>makelock</span><span class='op'>(</span><span class='va'>lockfile</span>, <span class='va'>lockmsg</span>, CreateDirectories <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'>removelock</span>(<span class='no'>lockfile</span>)</pre>
+<span class='fu'>removelock</span><span class='op'>(</span><span class='va'>lockfile</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,10 +158,15 @@ makelock return TRUE.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>logical indicating success</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>jefferis</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>makelock</span>(<span class='no'>lock</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>())</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span>(!<span class='fu'>makelock</span>(<span class='no'>lock</span>))
-<span class='fu'>removelock</span>(<span class='no'>lock</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>makelock</span><span class='op'>(</span><span class='va'>lock</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'>makelock</span><span class='op'>(</span><span class='va'>lock</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>removelock</span><span class='op'>(</span><span class='va'>lock</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -172,7 +182,7 @@ makelock return TRUE.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

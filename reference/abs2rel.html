@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -92,7 +92,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/natverse/nat.utils/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -107,7 +112,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Remove common part of two paths, leaving relative path</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/natverse/nat.utils/blob/master/R/fsutils.r'><code>R/fsutils.r</code></a></small>
     <div class="hidden name"><code>abs2rel.Rd</code></div>
     </div>
 
@@ -115,7 +120,7 @@
     <p>Remove common part of two paths, leaving relative path</p>
     </div>
 
-    <pre class="usage"><span class='fu'>abs2rel</span>(<span class='no'>path</span>, <span class='kw'>stempath</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(), <span class='kw'>StopIfNoCommonPath</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>abs2rel</span><span class='op'>(</span><span class='va'>path</span>, stempath <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>, StopIfNoCommonPath <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,10 +148,14 @@
 <p>Other path_utils: 
 <code><a href='common_path.html'>common_path</a>()</code>,
 <code><a href='split_path.html'>split_path</a>()</code></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>jefferis</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>path</span> <span class='kw'>=</span> <span class='st'>"/Volumes/JData/JPeople/Sebastian/images"</span>
-<span class='fu'>abs2rel</span>(<span class='no'>path</span>,<span class='st'>'/Volumes/JData'</span>)</div><div class='output co'>#&gt; [1] "JPeople/Sebastian/images"</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>path</span> <span class='op'>=</span> <span class='st'>"/Volumes/JData/JPeople/Sebastian/images"</span>
+<span class='fu'>abs2rel</span><span class='op'>(</span><span class='va'>path</span>,<span class='st'>'/Volumes/JData'</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "JPeople/Sebastian/images"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -162,7 +171,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
