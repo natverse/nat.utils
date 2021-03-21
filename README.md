@@ -6,7 +6,7 @@
 [![Downloads](http://cranlogs.r-pkg.org/badges/nat.utils?color=brightgreen)](http://www.r-pkg.org/pkg/nat.utils)
 [![Release Version](https://img.shields.io/github/release/natverse/nat.utils.svg)](https://github.com/jefferis/nat.utils/releases/latest) 
 [![R-CMD-check](https://github.com/natverse/nat.utils/workflows/R-CMD-check/badge.svg)](https://github.com/jefferis/nat.utils/actions)
-[![Coverage Status](https://img.shields.io/coveralls/natverse/nat.utils.svg)](https://coveralls.io/r/jefferis/nat.utils?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/natverse/nat.utils/badge.svg)](https://coveralls.io/r/natverse/nat.utils?branch=master)
 <!-- badges: end -->
 
 An R package containing utility functions to support the NeuroAnatomy Toolbox (nat)
