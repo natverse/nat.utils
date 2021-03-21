@@ -1,21 +1,28 @@
 Package: nat.utils
-Authors@R: person("Gregory","Jefferis", email="jefferis@gmail.com", 
-    role=c("aut", "cre"), comment = c(ORCID = "0000-0002-0587-9355"))
-Version: 0.5.1.9000
-License: GPL-3
 Title: File System Utility Functions for 'NeuroAnatomy Toolbox'
-Description: Utility functions that may be of general interest but are 
-    specifically required by the 'NeuroAnatomy Toolbox' ('nat'). Includes
-    functions to provide a basic make style system to update files based on
-    timestamp information, file locking and 'touch' utility. Convenience 
-    functions for working with file paths include 'abs2rel', 'split_path' 
-    and 'common_path'. Finally there are utility functions for working with 
-    'zip' and 'gzip' files including integrity tests.
-Imports: utils
-Suggests:
-    testthat (>= 0.9),
-    roxygen2
-RoxygenNote: 7.1.1
-Encoding: UTF-8
-ByteCompile: true
+Version: 0.5.1.9000
+Authors@R: 
+    person(given = "Gregory",
+           family = "Jefferis",
+           role = c("aut", "cre"),
+           email = "jefferis@gmail.com",
+           comment = c(ORCID = "0000-0002-0587-9355"))
+Description: Utility functions that may be of general interest
+    but are specifically required by the 'NeuroAnatomy Toolbox' ('nat').
+    Includes functions to provide a basic make style system to update
+    files based on timestamp information, file locking and 'touch'
+    utility. Convenience functions for working with file paths include
+    'abs2rel', 'split_path' and 'common_path'. Finally there are utility
+    functions for working with 'zip' and 'gzip' files including integrity
+    tests.
+License: GPL (>= 3)
 URL: http://natverse.github.io/nat.utils
+Imports: 
+    utils
+Suggests:
+    roxygen2,
+    testthat (>= 3.0.0)
+ByteCompile: true
+Encoding: UTF-8
+RoxygenNote: 7.1.1
+Config/testthat/edition: 3
