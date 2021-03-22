@@ -14,13 +14,13 @@ An R package containing utility functions to support the NeuroAnatomy Toolbox (n
 ## Background
 This package provides support functions for the [nat](https://github.com/natverse/nat)
 NeuroAnatomy Toolbox package. Some functions may nevertheless be of general 
-interest. See the [reference manual](http://cran.r-project.org/web/packages/nat.utils/nat.utils.pdf) 
-on [CRAN](http://cran.r-project.org/web/packages/nat.utils/) for a for full function listing.
+interest. See the [online documentation](https://natverse.org/nat.utils/reference/) 
+for a for full function listing.
 
 ## Installation
 
 ### Released versions
-From [CRAN](http://cran.r-project.org/web/packages/nat.utils/)- the recommended
+From [CRAN](https://cran.r-project.org/package=nat.utils). The recommended
 option for simplicity and since this package is not under heavy development:
 
 ```r
@@ -28,7 +28,7 @@ install.packages("nat.utils")
 ```
 
 ### Bleeding Edge
-Straight from github with Hadley Wickham's [devtools](https://github.com/hadley/devtools) package:
+Straight from github with Hadley Wickham's remotes package:
 
 ```r
 if(!require("remotes")) install.packages("remotes")
