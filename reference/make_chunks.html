@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • nat.utils</title>
+<title>Split inputs into a number of chunks — make_chunks • nat.utils</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Split inputs into a number of chunks — make_chunks" />
+<meta property="og:description" content="Split inputs into a number of chunks" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -108,138 +109,60 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Split inputs into a number of chunks</h1>
+    <small class="dont-index">Source: <a href='https://github.com/natverse/nat.utils/blob/master/R/chunks.R'><code>R/chunks.R</code></a></small>
+    <div class="hidden name"><code>make_chunks.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Split inputs into a number of chunks</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>make_chunks</span><span class='op'>(</span><span class='va'>x</span>, size <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, nchunks <span class='op'>=</span> <span class='cn'>NULL</span>, chunksize <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="RunCmdForNewerInput.html">RunCmdForNewerInput()</a></code> </p>
-        </td>
-        <td><p>Run a command if input files are newer than outputs</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="abs2rel.html">abs2rel()</a></code> </p>
-        </td>
-        <td><p>Remove common part of two paths, leaving relative path</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="common_path.html">common_path()</a></code> </p>
-        </td>
-        <td><p>Find common prefix of two or more (normalised) file paths</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="file.swap.html">file.swap()</a></code> </p>
-        </td>
-        <td><p>Swap names of two files (by renaming first to a temporary file)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="find_extdata.html">find_extdata()</a></code> </p>
-        </td>
-        <td><p>Construct paths to files in the extdata folder of a package</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gzip.crc.html">gzip.crc()</a></code> </p>
-        </td>
-        <td><p>Extract the CRC (32 bit hash) of a gzip file</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="is.gzip.html">is.gzip()</a></code> </p>
-        </td>
-        <td><p>Check if a file is a gzip file</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_chunks.html">make_chunks()</a></code> </p>
-        </td>
-        <td><p>Split inputs into a number of chunks</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="makelock.html">makelock()</a></code> <code><a href="makelock.html">removelock()</a></code> </p>
-        </td>
-        <td><p>Make and remove (NFS safe) lock files</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="nat.utils-defunct.html">file.hardlink()</a></code> </p>
-        </td>
-        <td><p>nat.utils: Defunct functions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ncpus.html">ncpus()</a></code> </p>
-        </td>
-        <td><p>Return number of cpus (or a default on failure)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_nl_from_parts.html">read_nl_from_parts()</a></code> </p>
-        </td>
-        <td><p>Make a neuronlist object from two separate files</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="save_nl_in_parts.html">save_nl_in_parts()</a></code> </p>
-        </td>
-        <td><p>Save a neuronlist object into separate data and metadata parts</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="split_path.html">split_path()</a></code> </p>
-        </td>
-        <td><p>Split file path into individual components (optionally including separators)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="touch.html">touch()</a></code> </p>
-        </td>
-        <td><p>Use unix touch utility to change file's timestamp</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="zipinfo.html">zipinfo()</a></code> </p>
-        </td>
-        <td><p>Return information about a zip archive using system unzip command</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="zipok.html">zipok()</a></code> </p>
-        </td>
-        <td><p>Verify integrity of one or more zip files</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>A vector of inputs e.g. ids, neurons etc (optional, see examples)</p></td>
+    </tr>
+    <tr>
+      <th>size</th>
+      <td><p>The number of inputs (defaults to <code><a href='https://rdrr.io/r/base/length.html'>length(x)</a></code> when <code>x</code>
+is present)</p></td>
+    </tr>
+    <tr>
+      <th>nchunks</th>
+      <td><p>The desired number of chunks</p></td>
+    </tr>
+    <tr>
+      <th>chunksize</th>
+      <td><p>The desired number of items per chunk</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The elements of x split into a list of chunks or (when <code>x</code> is
+  missing) a vector of integer indices in the range <code>1:nchunks</code>
+  specifying the chunk for each input element .</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>You must specify exactly one of <code>nchunks</code> and <code>chunksize</code>.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>make_chunks</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>11</span>, nchunks<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $`1`
+#&gt; [1] 1 2 3 4 5 6
+#&gt; 
+#&gt; $`2`
+#&gt; [1]  7  8  9 10 11
+#&gt; </div><div class='input'><span class='fu'>make_chunks</span><span class='op'>(</span>size<span class='op'>=</span><span class='fl'>11</span>, chunksize<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] 1 1 2 2 3 3 4 4 5 5 6</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
