@@ -9,14 +9,7 @@ Includes functions to provide a basic make style system to update files
 based on timestamp information, file locking and other convenience functions
 for working with the filesystem}
 \description{
-Utility functions that may be of general interest
-    but are specifically required by the 'NeuroAnatomy Toolbox' ('nat').
-    Includes functions to provide a basic make style system to update
-    files based on timestamp information, file locking and 'touch'
-    utility. Convenience functions for working with file paths include
-    'abs2rel', 'split_path' and 'common_path'. Finally there are utility
-    functions for working with 'zip' and 'gzip' files including integrity
-    tests.
+Utility functions that may be of general interest but are specifically required by the 'NeuroAnatomy Toolbox' ('nat'). Includes functions to provide a basic make style system to update files based on timestamp information, file locking and 'touch' utility. Convenience functions for working with file paths include 'abs2rel', 'split_path' and 'common_path'. Finally there are utility functions for working with 'zip' and 'gzip' files including integrity tests.
 }
 \seealso{
 nat
