@@ -21,7 +21,8 @@ Imports:
     checkmate
 Suggests:
     testthat (>= 0.9),
-    roxygen2
+    roxygen2,
+    covr
 ByteCompile: true
 Config/testthat/edition: 3
 Encoding: UTF-8
