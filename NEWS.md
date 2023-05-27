@@ -1,3 +1,14 @@
+# nat.utils 0.6
+
+## What's Changed
+* fix bug for `common_path()` on Windows (noticed by CRAN) (https://github.com/natverse/nat.utils/commit/bf1160095907f646b76df247edd82f0570899f52)
+* Feature/chunks by @jefferis in https://github.com/natverse/nat.utils/pull/9
+* Switch to GitHub actions by @jefferis in https://github.com/natverse/nat.utils/pull/10
+* Update README esp URLs by @jefferis in https://github.com/natverse/nat.utils/pull/11
+
+**Full Changelog**: https://github.com/natverse/nat.utils/compare/v0.5.1...v0.6
+
+
 # nat.utils 0.5.1
 
 * fixes `gzip.crc()` bug on solaris (#8, thanks to Brian Ripley)
