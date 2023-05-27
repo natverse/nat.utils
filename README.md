@@ -1,12 +1,12 @@
 # nat.utils
 <!-- badges: start -->
-[![natverse](https://img.shields.io/badge/natverse-Part%20of%20the%20natverse-a241b6)](https://natverse.github.io)
-[![Docs](https://img.shields.io/badge/docs-100%25-brightgreen.svg)](https://natverse.github.io/nat.utils/reference/)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/nat.utils)](http://cran.r-project.org/web/packages/nat.utils) 
-[![Downloads](http://cranlogs.r-pkg.org/badges/nat.utils?color=brightgreen)](http://www.r-pkg.org/pkg/nat.utils)
-[![Release Version](https://img.shields.io/github/release/natverse/nat.utils.svg)](https://github.com/jefferis/nat.utils/releases/latest) 
-[![R-CMD-check](https://github.com/natverse/nat.utils/workflows/R-CMD-check/badge.svg)](https://github.com/jefferis/nat.utils/actions)
-[![Coverage Status](https://coveralls.io/repos/github/natverse/nat.utils/badge.svg)](https://coveralls.io/r/natverse/nat.utils?branch=master)
+[![natverse](https://img.shields.io/badge/natverse-Part%20of%20the%20natverse-a241b6)](https://natverse.org/)
+[![Docs](https://img.shields.io/badge/docs-100%25-brightgreen.svg)](https://natverse.org/nat.utils/reference/)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/nat.utils)](https://cran.r-project.org/package=nat.utils) 
+[![Downloads](https://cranlogs.r-pkg.org/badges/nat.utils?color=brightgreen)](https://cran.r-project.org/package=nat.utils)
+[![Release Version](https://img.shields.io/github/release/natverse/nat.utils.svg)](https://github.com/natverse/nat.utils/releases/latest) 
+[![R-CMD-check](https://github.com/natverse/nat.utils/workflows/R-CMD-check/badge.svg)](https://github.com/natverse/nat.utils/actions)
+[![Coverage Status](https://coveralls.io/repos/github/natverse/nat.utils/badge.svg)](https://coveralls.io/github/natverse/nat.utils)
 <!-- badges: end -->
 
 An R package containing utility functions to support the NeuroAnatomy Toolbox (nat)
@@ -34,5 +34,5 @@ Straight from github with Hadley Wickham's remotes package:
 if(!require("remotes")) install.packages("remotes")
 remotes::install_github('natverse/nat.utils')
 ```
-Note: Windows users need [Rtools](http://www.murdoch-sutherland.com/Rtools/) to
+Note: Windows users need [Rtools](https://www.murdoch-sutherland.com/Rtools/) to
 install in this way.
