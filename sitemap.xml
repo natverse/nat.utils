@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://natverse.github.io/nat.utils/404.html</loc>
+  </url>
+  <url>
+    <loc>http://natverse.github.io/nat.utils/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>http://natverse.github.io/nat.utils/SUPPORT.html</loc>
+  </url>
+  <url>
+    <loc>http://natverse.github.io/nat.utils/authors.html</loc>
+  </url>
+  <url>
     <loc>http://natverse.github.io/nat.utils/index.html</loc>
+  </url>
+  <url>
+    <loc>http://natverse.github.io/nat.utils/news/index.html</loc>
   </url>
   <url>
     <loc>http://natverse.github.io/nat.utils/reference/RunCmdForNewerInput.html</loc>
@@ -20,6 +35,9 @@
   </url>
   <url>
     <loc>http://natverse.github.io/nat.utils/reference/gzip.crc.html</loc>
+  </url>
+  <url>
+    <loc>http://natverse.github.io/nat.utils/reference/index.html</loc>
   </url>
   <url>
     <loc>http://natverse.github.io/nat.utils/reference/is.gzip.html</loc>
