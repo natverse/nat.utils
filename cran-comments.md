@@ -5,8 +5,8 @@ normalizePath on Windows. See
   http://cran.r-project.org/web/checks/check_results_nat.utils.html
 
 ## Test environments
-* local OS X install, R 4.2.3
-* ubuntu 20.04 (on github actions), R 4.3
+* local OS X install, R 4.3.0
+* ubuntu 20.04 (on github actions), R 4.3.0
 * winbuilder (devel and release)
 
 ## R CMD check results
