@@ -1,6 +1,9 @@
-# nat.utils 0.6
-This update fixes a test error in v0.5.1 due to changes in the behaviour of
-normalizePath on Windows. See
+# nat.utils 0.6.1
+This updates fixes a function signature containing a T value and completely
+removes a function marked as defunct that did not have a documented return value.
+
+Of note v0.6.0 fixed a test error in v0.5.1 (the last version on CRAN) due to
+changes in the behaviour of normalizePath on Windows. See
 
   http://cran.r-project.org/web/checks/check_results_nat.utils.html
 
