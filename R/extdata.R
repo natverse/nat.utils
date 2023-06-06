@@ -182,7 +182,7 @@ read_nl_from_parts <- function(datapath, dfpath=NULL, package=NULL, ...) {
 #' # - inst/extdata/mypns.rds
 #' # - inst/extdata/mypns.df.rds
 #' }
-save_nl_in_parts <- function(x, datapath=NULL, dfpath=NULL, extdata=T, format=c("rds", "rda"), ...) {
+save_nl_in_parts <- function(x, datapath=NULL, dfpath=NULL, extdata=TRUE, format=c("rds", "rda"), ...) {
   if(!inherits(x, 'neuronlist')) 
     stop("I don't know what to do with objects of class: ", class(x))
   format=match.arg(format)
