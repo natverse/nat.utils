@@ -21,7 +21,7 @@ There were no ERRORs or WARNINGs on any platform.
 winbuilder devel reported the following NOTE relating to the archiving of the 
 package:
 
-  https://win-builder.r-project.org/9A0IbtenSosU/00check.log
+  https://win-builder.r-project.org/gzOq24R3P337/00check.log
 
 Package was archived on CRAN
 
