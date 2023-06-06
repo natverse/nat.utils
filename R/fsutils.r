@@ -1,16 +1,3 @@
-#' nat.utils: Defunct functions
-#' 
-#' @description These functions have been retired from \code{nat.utils}
-#' @param from Source file
-#' @param to (New) target hardlink file to create
-#' @export
-#' @name nat.utils-defunct
-#' @aliases file.hardlink
-#' @seealso \code{\link{file.link}}
-file.hardlink=function(from, to){
-  .Defunct('file.link', package = 'nat.utils')
-}
-
 #' Swap names of two files (by renaming first to a temporary file)
 #' @param f1,f2 Paths to files
 #' @return logical indicating success
