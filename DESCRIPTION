@@ -29,5 +29,3 @@ Encoding: UTF-8
 RoxygenNote: 7.2.3
 URL: https://github.com/natverse/nat.utils
 BugReports: https://github.com/natverse/nat.utils/issues
-Remotes: 
-    natverse/nat.utils
