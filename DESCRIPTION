@@ -1,6 +1,6 @@
 Package: nat.utils
 Title: File System Utility Functions for 'NeuroAnatomy Toolbox'
-Version: 0.6
+Version: 0.6.0.9000
 Authors@R: 
     person(given = "Gregory",
            family = "Jefferis",
