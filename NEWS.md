@@ -1,4 +1,7 @@
-# nat.utils (development version)
+# nat.utils 0.6.1
+
+* remove defunct file.hardlink()
+* fix T in function signature identified by CRAN
 
 # nat.utils 0.6
 
