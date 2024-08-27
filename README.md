@@ -2,7 +2,7 @@
 <!-- badges: start -->
 [![natverse](https://img.shields.io/badge/natverse-Part%20of%20the%20natverse-a241b6)](https://natverse.org/)
 [![Docs](https://img.shields.io/badge/docs-100%25-brightgreen.svg)](https://natverse.org/nat.utils/reference/)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/nat.utils)](https://cran.r-project.org/package=nat.utils) 
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/nat.utils)](https://cran.r-project.org/package=nat.utils) 
 [![Downloads](https://cranlogs.r-pkg.org/badges/nat.utils?color=brightgreen)](https://cran.r-project.org/package=nat.utils)
 [![Release Version](https://img.shields.io/github/release/natverse/nat.utils.svg)](https://github.com/natverse/nat.utils/releases/latest) 
 [![R-CMD-check](https://github.com/natverse/nat.utils/workflows/R-CMD-check/badge.svg)](https://github.com/natverse/nat.utils/actions)
