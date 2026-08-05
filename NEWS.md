@@ -1,3 +1,8 @@
+# nat.utils 0.6.2
+
+* Replace deprecated special argument names in `structure()` calls for R-devel.
+* Fix Rtools URL in README.
+
 # nat.utils 0.6.1
 
 * remove defunct file.hardlink()

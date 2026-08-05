@@ -34,5 +34,5 @@ Straight from github with Hadley Wickham's remotes package:
 if(!require("remotes")) install.packages("remotes")
 remotes::install_github('natverse/nat.utils')
 ```
-Note: Windows users need [Rtools](https://www.murdoch-sutherland.com/Rtools/) to
+Note: Windows users need [Rtools](https://cran.r-project.org/bin/windows/Rtools/) to
 install in this way.
