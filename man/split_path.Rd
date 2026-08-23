@@ -42,8 +42,8 @@ split_path("C:\\\\a\\\\b\\\\c", fsep="\\\\")
 \seealso{
 \code{\link{file.path}}
 
-Other path_utils: 
-\code{\link{abs2rel}()},
-\code{\link{common_path}()}
+Other path_utils:
+\code{\link[=abs2rel]{abs2rel()}},
+\code{\link[=common_path]{common_path()}}
 }
 \concept{path_utils}

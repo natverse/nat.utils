@@ -69,8 +69,8 @@ save_nl_in_parts(pns, 'mypns.rda')
 }
 }
 \seealso{
-Other extdata: 
-\code{\link{find_extdata}()},
-\code{\link{read_nl_from_parts}()}
+Other extdata:
+\code{\link[=find_extdata]{find_extdata()}},
+\code{\link[=read_nl_from_parts]{read_nl_from_parts()}}
 }
 \concept{extdata}

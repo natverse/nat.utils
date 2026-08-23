@@ -21,8 +21,8 @@ Uses system unzip command.
 \seealso{
 \code{\link{zip}}
 
-Other ziputils: 
-\code{\link{zipok}()}
+Other ziputils:
+\code{\link[=zipok]{zipok()}}
 }
 \author{
 jefferis

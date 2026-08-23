@@ -17,5 +17,10 @@ nat
 \author{
 \strong{Maintainer}: Gregory Jefferis \email{jefferis@gmail.com} (\href{https://orcid.org/0000-0002-0587-9355}{ORCID})
 
+Authors:
+\itemize{
+  \item Gregory Jefferis \email{jefferis@gmail.com} (\href{https://orcid.org/0000-0002-0587-9355}{ORCID})
+}
+
 }
 \keyword{internal}

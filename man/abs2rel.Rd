@@ -26,9 +26,9 @@ abs2rel(path,'/Volumes/JData')
 \seealso{
 \code{\link{path.expand}}, \code{\link{normalizePath}}
 
-Other path_utils: 
-\code{\link{common_path}()},
-\code{\link{split_path}()}
+Other path_utils:
+\code{\link[=common_path]{common_path()}},
+\code{\link[=split_path]{split_path()}}
 }
 \author{
 jefferis
