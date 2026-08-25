@@ -1,8 +1,8 @@
 #' Check that a suggested package is available, with install instructions
 #'
-#' @description \code{check_package_available} checks whether a package can be
-#'   loaded and, if not, stops with a clearly formatted message telling the user
-#'   how to install it. Use it to guard code paths that depend on packages
+#' @description \code{check_package_available} checks whether a package is
+#'   installed and, if not, stops with a clearly formatted message telling the
+#'   user how to install it. Use it to guard code paths that depend on packages
 #'   listed under \code{Suggests}.
 #'
 #' @details The install command is chosen to match the package's source (given
@@ -33,6 +33,9 @@
 #'   When the \pkg{cli} package is available (almost always the case) the install
 #'   command is shown as a clickable hyperlink in the RStudio console and other
 #'   supporting terminals; otherwise a plain-text message is used.
+#'
+#'   Availability is tested with \code{\link[utils]{packageVersion}}, which reads
+#'   the installed package's metadata without loading its namespace.
 #'
 #' @param package Name of the package to check (a single string).
 #' @param repo Optional install source: \code{NULL} (CRAN, the default), a
@@ -65,7 +68,7 @@
 #' }
 #' }
 check_package_available <- function(package, repo = NULL, error = TRUE) {
-  if (requireNamespace(package, quietly = TRUE))
+  if (package_available(package))
     return(invisible(TRUE))
   if (!isTRUE(error))
     return(invisible(FALSE))
@@ -92,8 +95,16 @@ check_package_available <- function(package, repo = NULL, error = TRUE) {
 # install). `available` is the predicate used to decide which install tool is
 # present; injectable so tests can exercise each branch deterministically.
 # Not exported.
-install_command <- function(package, repo = NULL,
-                            available = function(p) requireNamespace(p, quietly = TRUE)) {
+# Is `pkg` installed? Uses packageVersion(), which reads the installed
+# DESCRIPTION without loading the package namespace (unlike requireNamespace()).
+package_available <- function(pkg) {
+  isTRUE(tryCatch({
+    utils::packageVersion(pkg)
+    TRUE
+  }, error = function(e) FALSE))
+}
+
+install_command <- function(package, repo = NULL, available = package_available) {
   source <- if (is.null(repo) || identical(toupper(repo), "CRAN")) "cran"
     else if (grepl("^https?://", repo))                    "universe"
     else if (grepl("/", repo, fixed = TRUE))               "github"
