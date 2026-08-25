@@ -2,6 +2,7 @@
 
 export(RunCmdForNewerInput)
 export(abs2rel)
+export(check_package_available)
 export(common_path)
 export(file.swap)
 export(find_extdata)
