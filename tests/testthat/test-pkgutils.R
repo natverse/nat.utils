@@ -8,6 +8,13 @@ test_that("check_package_available errors for missing packages", {
   expect_false(check_package_available("nosuchpkg12345", error = FALSE))
 })
 
+# helpers to force a particular set of install tools to be "available"
+none <- function(p) FALSE
+only <- function(...) {
+  pkgs <- c(...)
+  function(p) p %in% pkgs
+}
+
 test_that("install_command picks the right source", {
   # CRAN (no repo) -> pak or install.packages, always naming the package
   expect_match(install_command("arrow")$cmd, "arrow")
@@ -30,19 +37,29 @@ test_that("install_command picks the right source", {
   expect_match(uni, "getOption('repos')", fixed = TRUE)
 })
 
-test_that("bioc install advice matches available tooling", {
-  res <- install_command("Rgraphviz", repo = "Bioconductor")
-  have_pak <- requireNamespace("pak", quietly = TRUE)
-  have_bioc <- requireNamespace("BiocManager", quietly = TRUE)
-  if (have_pak) {
-    expect_match(res$cmd, "pak::pkg_install", fixed = TRUE)
-    expect_null(res$note)
-  } else if (have_bioc) {
-    expect_match(res$cmd, "BiocManager::install", fixed = TRUE)
-    expect_null(res$note)
-  } else {
-    # neither installer present: command bootstraps BiocManager and flags it
-    expect_match(res$cmd, "install.packages(\"BiocManager\")", fixed = TRUE)
-    expect_false(is.null(res$note))
-  }
+test_that("GitHub tool preference is natmanager > pak > remotes", {
+  spec <- "flyconnectome/hemibrainr"
+  expect_match(install_command("hemibrainr", spec, only("natmanager", "pak"))$cmd,
+               "natmanager::install", fixed = TRUE)
+  expect_match(install_command("hemibrainr", spec, only("pak"))$cmd,
+               "pak::pkg_install", fixed = TRUE)
+  expect_match(install_command("hemibrainr", spec, none)$cmd,
+               "remotes::install_github", fixed = TRUE)
+})
+
+test_that("Bioc tool preference is pak > BiocManager, with a note when neither", {
+  expect_match(install_command("Rgraphviz", "Bioconductor", only("pak", "BiocManager"))$cmd,
+               "pak::pkg_install(\"bioc::Rgraphviz\")", fixed = TRUE)
+  expect_match(install_command("Rgraphviz", "Bioconductor", only("BiocManager"))$cmd,
+               "BiocManager::install", fixed = TRUE)
+  res <- install_command("Rgraphviz", "Bioconductor", none)
+  expect_match(res$cmd, "install.packages(\"BiocManager\")", fixed = TRUE)
+  expect_false(is.null(res$note))
+})
+
+test_that("CRAN uses pak when available, else install.packages", {
+  expect_match(install_command("arrow", available = only("pak"))$cmd,
+               "pak::pkg_install(\"arrow\")", fixed = TRUE)
+  expect_match(install_command("arrow", available = none)$cmd,
+               "install.packages(\"arrow\")", fixed = TRUE)
 })

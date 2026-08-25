@@ -89,15 +89,18 @@ check_package_available <- function(package, repo = NULL, error = TRUE) {
 # Build the best install command for a package given its source (`repo`).
 # Returns a list with `cmd` (the command string) and optional `note` (plain
 # text flagging anything the user should know, e.g. an extra prerequisite
-# install). Not exported.
-install_command <- function(package, repo = NULL) {
+# install). `available` is the predicate used to decide which install tool is
+# present; injectable so tests can exercise each branch deterministically.
+# Not exported.
+install_command <- function(package, repo = NULL,
+                            available = function(p) requireNamespace(p, quietly = TRUE)) {
   source <- if (is.null(repo) || identical(toupper(repo), "CRAN")) "cran"
     else if (grepl("^https?://", repo))                    "universe"
     else if (grepl("/", repo, fixed = TRUE))               "github"
     else if (tolower(repo) %in% c("bioc", "bioconductor")) "bioc"
     else "cran"
 
-  has <- function(p) requireNamespace(p, quietly = TRUE)
+  has <- available
 
   switch(source,
     github = list(cmd = if (has("natmanager"))
