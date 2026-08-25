@@ -23,9 +23,9 @@ instead, so it can be used as a plain availability test.}
   raised.
 }
 \description{
-\code{check_package_available} checks whether a package is
-  installed and, if not, stops with a clearly formatted message telling the
-  user how to install it. Use it to guard code paths that depend on packages
+\code{check_package_available} checks whether a package can be
+  loaded and, if not, stops with a clearly formatted message telling the user
+  how to install it. Use it to guard code paths that depend on packages
   listed under \code{Suggests}.
 }
 \details{
@@ -57,9 +57,6 @@ The install command is chosen to match the package's source (given
   When the \pkg{cli} package is available (almost always the case) the install
   command is shown as a clickable hyperlink in the RStudio console and other
   supporting terminals; otherwise a plain-text message is used.
-
-  Availability is tested with \code{\link[utils]{packageVersion}}, which reads
-  the installed package's metadata without loading its namespace.
 }
 \examples{
 \dontrun{
